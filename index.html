@@ -206,7 +206,7 @@
       }
 
       /* --------------------------------------------------------------------------
-   04. PREMIUM MATCHING FONTS SPLASH SCREEN (DOWNWARDS EXIT)
+   04. PREMIUM MATCHING FONTS SPLASH SCREEN (REVERSE TEXT EXIT)
    -------------------------------------------------------------------------- */
       .splash-screen {
         position: fixed;
@@ -223,10 +223,8 @@
         justify-content: center;
         text-align: center;
         padding: 4rem;
-        transition:
-          opacity 1s cubic-bezier(0.85, 0, 0.15, 1),
-          transform 1.2s cubic-bezier(0.85, 0, 0.15, 1);
-        will-change: opacity, transform;
+        opacity: 1;
+        transition: visibility 0s linear 0.6s;
       }
 
       .splash-logo-wrap {
@@ -236,36 +234,30 @@
         overflow: hidden;
       }
 
+      /* Replaced infinite buggy keyframe entry with modern pure CSS transition flow */
       .splash-logo {
-        height: 48px;
+        height: 72px;
         width: auto;
         display: block;
         opacity: 0;
         transform: translate3d(-30px, 0, 0);
-        animation: splashLogoReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards
-          0.2s;
+        transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1), opacity 0.6s cubic-bezier(0.85, 0, 0.15, 1);
       }
 
-      @keyframes splashLogoReveal {
-        0% {
-          opacity: 0;
-          transform: translate3d(-30px, 0, 0);
-        }
-
-        100% {
-          opacity: 1;
-          transform: translate3d(0, 0, 0);
-        }
+      /* Entrance class applied via JS layout initialization */
+      .splash-screen.entering .splash-logo {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
       }
 
       @media (max-width: 768px) {
         .splash-logo-wrap {
-          top: 2rem;
+          top: 2.5rem;
           left: 2rem;
         }
 
         .splash-logo {
-          height: 36px;
+          height: 54px;
         }
       }
 
@@ -317,10 +309,31 @@
         transform: rotate(360deg);
       }
 
+      /* Absolute synchronized exit states with bulletproof transform overrides */
+      .splash-screen.exiting .splash-header-title {
+        transform: translate3d(0, 105%, 0) !important;
+      }
+      
+      .splash-screen.exiting .splash-sub-portfolio {
+        transform: translate3d(0, 105%, 0) !important;
+      }
+
+      .splash-screen.exiting .splash-logo {
+        transform: translate3d(0, 105%, 0) !important;
+        opacity: 0 !important;
+      }
+
+      .splash-screen.exiting .splash-massive-ticker {
+        transform: translate3d(0, 105%, 0) !important;
+        opacity: 0 !important;
+      }
+
+      /* Completely remove layout node from user target once exit transitions complete */
       .splash-screen.loaded {
         opacity: 0;
-        transform: translate3d(0, 100%, 0);
+        visibility: hidden;
         pointer-events: none;
+        transition: opacity 0.4s ease, visibility 0.4s step-end;
       }
 
       .splash-statement-wrap {
@@ -338,6 +351,7 @@
         width: 100%;
       }
 
+      /* Transition-ready structural setup */
       .splash-header-title {
         font-family: "Instrument Serif", serif;
         font-size: clamp(3.5rem, 8vw, 9.5rem);
@@ -345,8 +359,7 @@
         text-transform: uppercase;
         letter-spacing: -0.02em;
         transform: translate3d(0, 100%, 0);
-        animation: lineRevealEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) forwards
-          0.2s;
+        transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1);
       }
 
       .splash-sub-portfolio {
@@ -357,18 +370,15 @@
         text-transform: lowercase;
         margin-top: 0.5rem;
         transform: translate3d(0, 100%, 0);
-        animation: lineRevealEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) forwards
-          0.4s;
+        transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1);
       }
 
-      @keyframes lineRevealEntrance {
-        0% {
-          transform: translate3d(0, 100%, 0);
-        }
-
-        100% {
-          transform: translate3d(0, 0, 0);
-        }
+      /* Entrance state applied via JS on launch */
+      .splash-screen.entering .splash-header-title {
+        transform: translate3d(0, 0, 0);
+      }
+      .splash-screen.entering .splash-sub-portfolio {
+        transform: translate3d(0, 0, 0);
       }
 
       .splash-right-counter {
@@ -376,6 +386,7 @@
         bottom: 4rem;
         right: 5rem;
         text-align: right;
+        overflow: hidden;
       }
 
       .splash-massive-ticker {
@@ -384,11 +395,13 @@
         font-weight: 700;
         line-height: 0.8;
         letter-spacing: -0.04em;
+        transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1), opacity 0.6s cubic-bezier(0.85, 0, 0.15, 1);
       }
 
       @media (max-width: 768px) {
         .splash-screen {
-          padding: 2rem 1rem;
+          padding: 2rem 1.5rem;
+          justify-content: center;
         }
 
         .splash-header-title {
@@ -396,8 +409,12 @@
         }
 
         .splash-right-counter {
-          bottom: 2rem;
-          right: 2rem;
+          position: relative;
+          bottom: auto;
+          right: auto;
+          margin-top: 4rem;
+          text-align: center;
+          width: 100%;
         }
       }
 
@@ -471,17 +488,13 @@
         }
       }
 
-      /* Tablet Optimization for Hero Layout & Buttons */
       @media (max-width: 991px) {
-        /* Change the 2-column layout to a stacked layout earlier for tablets */
         .hero-lower-row-grid {
           grid-template-columns: 1fr !important;
           gap: 2rem;
           text-align: left;
-          /* Keeps your preferred left alignment */
         }
 
-        /* Prevent text alignment confusion on tablet dimensions */
         .hero-center-display {
           text-align: left !important;
         }
@@ -490,33 +503,26 @@
           text-align: left !important;
         }
 
-        /* Align the buttons container to the left under the text */
         .hero-centered-ctas {
           justify-content: flex-start !important;
           gap: 1.5rem;
           width: 100%;
         }
 
-        /* Force button text to stay inline and give them a structured width on tablet */
         .btn-premium-line {
           white-space: nowrap;
-          /* Fixes the text wrapping seen in image_2b1124.png */
           text-align: center;
           padding: 1.25rem 2.5rem;
           min-width: 180px;
-          /* Ensures buttons have a solid, uniform baseline width */
         }
       }
 
-      /* Tablet Optimization for About Section */
       @media (max-width: 1024px) {
         .about-container {
-          /* Switch from 3 irregular columns to a clean stacked layout */
           grid-template-columns: 1fr !important;
           gap: 3.5rem;
         }
 
-        /* Force the top row to display the image and specs side-by-side neatly, or stack if preferred */
         .about-col-specs {
           width: 100%;
         }
@@ -527,44 +533,36 @@
         }
       }
 
-      /* For true tablet structures (like iPads) where you want a clean editorial flow */
       @media (min-width: 769px) and (max-width: 1024px) {
-        /* Create a clean 2-column top section for the photo and specs */
         .about-container {
           grid-template-columns: 1fr 1.2fr !important;
         }
 
-        /* Make the long bio narrative stretch beautifully underneath them */
         .about-right-narrative {
           grid-column: span 2;
           margin-top: 1rem;
         }
       }
 
-      /* Premium Mobile Optimization for Hero Section */
       @media (max-width: 480px) {
-        /* Center the lower row grid text elements */
         .hero-lower-row-grid {
           text-align: center !important;
         }
 
-        /* Prevent text alignment confusion on tablet dimensions */
         .hero-center-display {
           text-align: center !important;
         }
 
         .hero-main-h1 {
           text-align: center !important;
-          line-height: 1.15 !important; /* Fixed tight overlap tracking on compact devices */
+          line-height: 1.15 !important;
           margin-bottom: 2.5rem !important;
         }
 
-        /* Center the synopsis paragraph text */
         .hero-synopsis {
           text-align: center;
         }
 
-        /* Change buttons from side-by-side to a clean stacked layout */
         .hero-centered-ctas {
           flex-direction: column;
           gap: 1rem !important;
@@ -699,7 +697,6 @@
           transform: translate(-50%, -50%) scale(1);
           opacity: 0.8;
         }
-
         100% {
           transform: translate(-50%, -50%) scale(3.5);
           opacity: 0;
@@ -924,7 +921,6 @@
         0% {
           transform: translate3d(0, 0, 0);
         }
-
         100% {
           transform: translate3d(-50%, 0, 0);
         }
@@ -957,7 +953,7 @@
       }
 
       /* --------------------------------------------------------------------------
-   08. SELECTED PROJECTS — HIGH-END PARALLAX STACKING LAYOUT (REDESIGNED FOR FULL VIEW HD)
+   08. SELECTED PROJECTS — HIGH-END PARALLAX STACKING LAYOUT
    -------------------------------------------------------------------------- */
       .projects-section {
         padding: 8rem 0;
@@ -996,41 +992,15 @@
         }
       }
 
-      .landscape-project-frame:nth-child(1) {
-        z-index: 31;
-      }
-
-      .landscape-project-frame:nth-child(2) {
-        z-index: 32;
-      }
-
-      .landscape-project-frame:nth-child(3) {
-        z-index: 33;
-      }
-
-      .landscape-project-frame:nth-child(4) {
-        z-index: 34;
-      }
-
-      .landscape-project-frame:nth-child(5) {
-        z-index: 35;
-      }
-
-      .landscape-project-frame:nth-child(6) {
-        z-index: 36;
-      }
-
-      .landscape-project-frame:nth-child(7) {
-        z-index: 37;
-      }
-
-      .landscape-project-frame:nth-child(8) {
-        z-index: 38;
-      }
-
-      .landscape-project-frame:nth-child(9) {
-        z-index: 39;
-      }
+      .landscape-project-frame:nth-child(1) { z-index: 31; }
+      .landscape-project-frame:nth-child(2) { z-index: 32; }
+      .landscape-project-frame:nth-child(3) { z-index: 33; }
+      .landscape-project-frame:nth-child(4) { z-index: 34; }
+      .landscape-project-frame:nth-child(5) { z-index: 35; }
+      .landscape-project-frame:nth-child(6) { z-index: 36; }
+      .landscape-project-frame:nth-child(7) { z-index: 37; }
+      .landscape-project-frame:nth-child(8) { z-index: 38; }
+      .landscape-project-frame:nth-child(9) { z-index: 39; }
 
       .project-canvas-window {
         position: relative;
@@ -1580,7 +1550,6 @@
           opacity: 0;
           transform: translateY(10px);
         }
-
         to {
           opacity: 1;
           transform: translateY(0);
@@ -1631,7 +1600,7 @@
         left: 50%;
         transform: translate3d(-50%, 0, 0);
         z-index: 9998;
-        background-color: rgba(18, 18, 18, 0.65); /* Transparent tint base */
+        background-color: rgba(18, 18, 18, 0.65);
         backdrop-filter: blur(14px) saturate(180%);
         -webkit-backdrop-filter: blur(14px) saturate(180%);
         border: 1.5px solid rgba(255, 255, 255, 0.08);
@@ -1796,28 +1765,23 @@
         transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
-      /* Hover effect */
       .back-to-top-btn:hover {
         background-color: rgba(127, 127, 127, 0.08);
       }
 
       .back-to-top-btn:hover svg {
         transform: translateY(-3px);
-        /* Subtle premium layout micro-animation */
       }
 
-      /* Active visible state triggered by JS */
       .back-to-top-btn.is-visible {
         opacity: 1;
         visibility: visible;
         pointer-events: auto;
       }
 
-      /* Responsive optimization for mobile devices */
       @media (max-width: 768px) {
         .back-to-top-btn {
           bottom: 7rem;
-          /* Moves it above the floating navigation dock on small screens */
           right: 1.5rem;
           width: 40px;
           height: 40px;
@@ -1930,66 +1894,26 @@
             >
             <div class="marquee-row-channel">
               <div class="marquee-inner-track">
-                <span class="tech-marquee-node"
-                  >React <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >Next.js <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >TypeScript <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >JavaScript (ES6+) <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >HTML5 <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >CSS3 <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >Tailwind CSS <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >Zustand <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >Redux Toolkit <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >SWR <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >React <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >Next.js <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >TypeScript <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >JavaScript (ES6+) <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >HTML5 <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >CSS3 <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >Tailwind CSS <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >Zustand <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >Redux Toolkit <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >SWR <span class="marquee-node-bullet"></span
-                ></span>
+                <span class="tech-marquee-node">React <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">Next.js <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">TypeScript <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">JavaScript (ES6+) <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">HTML5 <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">CSS3 <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">Tailwind CSS <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">Zustand <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">Redux Toolkit <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">SWR <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">React <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">Next.js <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">TypeScript <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">JavaScript (ES6+) <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">HTML5 <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">CSS3 <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">Tailwind CSS <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">Zustand <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">Redux Toolkit <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">SWR <span class="marquee-node-bullet"></span></span>
               </div>
             </div>
           </div>
@@ -2000,66 +1924,26 @@
             >
             <div class="marquee-row-channel reverse-track">
               <div class="marquee-inner-track">
-                <span class="tech-marquee-node"
-                  >Node.js <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >Express.js <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >Python <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >PHP <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >RESTful APIs <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >JWT Modules <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >MySQL <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >MongoDB <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >Supabase <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >Firebase Core <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >Node.js <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >Express.js <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >Python <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >PHP <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >RESTful APIs <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >JWT Modules <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >MySQL <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >MongoDB <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >Supabase <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >Firebase Core <span class="marquee-node-bullet"></span
-                ></span>
+                <span class="tech-marquee-node">Node.js <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">Express.js <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">Python <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">PHP <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">RESTful APIs <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">JWT Modules <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">MySQL <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">MongoDB <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">Supabase <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">Firebase Core <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">Node.js <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">Express.js <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">Python <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">PHP <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">RESTful APIs <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">JWT Modules <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">MySQL <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">MongoDB <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">Supabase <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">Firebase Core <span class="marquee-node-bullet"></span></span>
               </div>
             </div>
           </div>
@@ -2070,60 +1954,24 @@
             >
             <div class="marquee-row-channel">
               <div class="marquee-inner-track">
-                <span class="tech-marquee-node"
-                  >Git Ecosystem <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >GitHub Platform <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >Bitbucket Hub <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >Docker Engine <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >AWS Cloud (EC2/S3) <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >Vercel Edge <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >Postman Terminal <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >Figma Systems <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >CI/CD Automations <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >Git Ecosystem <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >GitHub Platform <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >Bitbucket Hub <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >Docker Engine <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >AWS Cloud (EC2/S3) <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >Vercel Edge <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >Postman Terminal <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >Figma Systems <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >CI/CD Automations <span class="marquee-node-bullet"></span
-                ></span>
+                <span class="tech-marquee-node">Git Ecosystem <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">GitHub Platform <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">Bitbucket Hub <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">Docker Engine <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">AWS Cloud (EC2/S3) <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">Vercel Edge <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">Postman Terminal <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">Figma Systems <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">CI/CD Automations <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">Git Ecosystem <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">GitHub Platform <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">Bitbucket Hub <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">Docker Engine <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">AWS Cloud (EC2/S3) <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">Vercel Edge <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">Postman Terminal <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">Figma Systems <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">CI/CD Automations <span class="marquee-node-bullet"></span></span>
               </div>
             </div>
           </div>
@@ -2134,54 +1982,22 @@
             >
             <div class="marquee-row-channel reverse-track">
               <div class="marquee-inner-track">
-                <span class="tech-marquee-node"
-                  >Claude Code <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >GitHub Copilot <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >OpenAI Core API <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >Anthropic Engine <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >Stripe Node <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >PayMongo Portal <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >PayPal API <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >Secure Webhooks <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >Claude Code <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >GitHub Copilot <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >OpenAI Core API <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >Anthropic Engine <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >Stripe Node <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >PayMongo Portal <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >PayPal API <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >Secure Webhooks <span class="marquee-node-bullet"></span
-                ></span>
+                <span class="tech-marquee-node">Claude Code <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">GitHub Copilot <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">OpenAI Core API <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">Anthropic Engine <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">Stripe Node <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">PayMongo Portal <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">PayPal API <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">Secure Webhooks <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">Claude Code <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">GitHub Copilot <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">OpenAI Core API <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">Anthropic Engine <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">Stripe Node <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">PayMongo Portal <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">PayPal API <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node">Secure Webhooks <span class="marquee-node-bullet"></span></span>
               </div>
             </div>
           </div>
@@ -2323,7 +2139,7 @@
                   rel="noopener noreferrer"
                   >Public GitHub
                 </a>
-                <spa n class="proj-action-splitter">/</spa>
+                <span class="proj-action-splitter">/</span>
                 <a
                   href="https://prodisenyo-probuild.vercel.app/"
                   target="_blank"
@@ -2888,9 +2704,14 @@
 
         document.body.style.overflow = "hidden";
 
+        // Instantly trigger smooth entrance transitions upon file mount
+        setTimeout(() => {
+          splashScreen.classList.add("entering");
+        }, 50);
+
         let loaderPercent = 0;
-        const targetDuration = 1000; // Changed to 500ms (0.5 seconds)
-        const intervalTime = 10; // Faster tick rate for a smoother fast-count
+        const targetDuration = 1000;
+        const intervalTime = 10;
         const totalSteps = targetDuration / intervalTime;
         const increment = 100 / totalSteps;
 
@@ -2902,10 +2723,15 @@
             clearInterval(loadingInterval);
             splashCounter.textContent = "100";
 
-            // Immediate clean exit right at the 0.5-second mark
-            splashScreen.classList.add("loaded");
-            document.body.style.overflow = "";
-            initFramerObserver();
+            // Stage 1: Trigger perfectly mirrored synchronized reverse transitions
+            splashScreen.classList.add("exiting");
+
+            // Stage 2: Completely lift the layout mask cover from view hierarchy
+            setTimeout(() => {
+              splashScreen.classList.add("loaded");
+              document.body.style.overflow = "";
+              initFramerObserver();
+            }, 600); // Perfectly calibrated timeline parity matching the 0.6s transform curve
           } else {
             splashCounter.textContent = Math.floor(loaderPercent);
           }
@@ -3003,7 +2829,6 @@
             backToTopBtn.classList.remove("is-visible");
           }
 
-          // Optimized layout loop for uncropped image elements
           parallaxImages.forEach((img) => {
             const viewFrame =
               img.closest(".project-canvas-window") ||
@@ -3020,13 +2845,11 @@
                 (window.innerHeight - relativeBox.top) /
                 (window.innerHeight + relativeBox.height);
 
-              // Smooth, subtle transformation shift for uncropped responsive images
               const translateValue = viewProgress * 12 - 6;
               img.style.transform = `translate3d(0, ${translateValue}%, 0)`;
             }
           });
 
-          // Locate this block in your scroll listener and replace it:
           stackingCards.forEach((card, index) => {
             const boxRect = card.getBoundingClientRect();
 
@@ -3037,14 +2860,13 @@
               const overlapDelta =
                 (window.innerHeight * 0.1 - boxRect.top) / boxRect.height;
 
-              // Scale down card dimensions gracefully as they stack
               const linearScale = Math.max(0.92, 1 - overlapDelta * 0.04);
 
               card.style.transform = `scale(${linearScale})`;
-              card.style.filter = "none"; // Strips the brightness filter
+              card.style.filter = "none";
             } else if (boxRect.top > window.innerHeight * 0.1) {
               card.style.transform = `scale(1)`;
-              card.style.opacity = 1; // Reset back to completely solid
+              card.style.opacity = 1;
               card.style.filter = "none";
             }
           });
