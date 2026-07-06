@@ -241,7 +241,9 @@
         display: block;
         opacity: 0;
         transform: translate3d(-30px, 0, 0);
-        transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1), opacity 0.6s cubic-bezier(0.85, 0, 0.15, 1);
+        transition:
+          transform 0.6s cubic-bezier(0.85, 0, 0.15, 1),
+          opacity 0.6s cubic-bezier(0.85, 0, 0.15, 1);
       }
 
       /* Entrance class applied via JS layout initialization */
@@ -313,7 +315,7 @@
       .splash-screen.exiting .splash-header-title {
         transform: translate3d(0, 105%, 0) !important;
       }
-      
+
       .splash-screen.exiting .splash-sub-portfolio {
         transform: translate3d(0, 105%, 0) !important;
       }
@@ -333,7 +335,9 @@
         opacity: 0;
         visibility: hidden;
         pointer-events: none;
-        transition: opacity 0.4s ease, visibility 0.4s step-end;
+        transition:
+          opacity 0.4s ease,
+          visibility 0.4s step-end;
       }
 
       .splash-statement-wrap {
@@ -395,7 +399,9 @@
         font-weight: 700;
         line-height: 0.8;
         letter-spacing: -0.04em;
-        transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1), opacity 0.6s cubic-bezier(0.85, 0, 0.15, 1);
+        transition:
+          transform 0.6s cubic-bezier(0.85, 0, 0.15, 1),
+          opacity 0.6s cubic-bezier(0.85, 0, 0.15, 1);
       }
 
       @media (max-width: 768px) {
@@ -405,7 +411,7 @@
         }
 
         .splash-header-title {
-          font-size: clamp(2.7rem, 9.4vw, 3rem);
+          font-size: clamp(2.5rem, 9.4vw, 3rem);
         }
 
         .splash-right-counter {
@@ -992,15 +998,33 @@
         }
       }
 
-      .landscape-project-frame:nth-child(1) { z-index: 31; }
-      .landscape-project-frame:nth-child(2) { z-index: 32; }
-      .landscape-project-frame:nth-child(3) { z-index: 33; }
-      .landscape-project-frame:nth-child(4) { z-index: 34; }
-      .landscape-project-frame:nth-child(5) { z-index: 35; }
-      .landscape-project-frame:nth-child(6) { z-index: 36; }
-      .landscape-project-frame:nth-child(7) { z-index: 37; }
-      .landscape-project-frame:nth-child(8) { z-index: 38; }
-      .landscape-project-frame:nth-child(9) { z-index: 39; }
+      .landscape-project-frame:nth-child(1) {
+        z-index: 31;
+      }
+      .landscape-project-frame:nth-child(2) {
+        z-index: 32;
+      }
+      .landscape-project-frame:nth-child(3) {
+        z-index: 33;
+      }
+      .landscape-project-frame:nth-child(4) {
+        z-index: 34;
+      }
+      .landscape-project-frame:nth-child(5) {
+        z-index: 35;
+      }
+      .landscape-project-frame:nth-child(6) {
+        z-index: 36;
+      }
+      .landscape-project-frame:nth-child(7) {
+        z-index: 37;
+      }
+      .landscape-project-frame:nth-child(8) {
+        z-index: 38;
+      }
+      .landscape-project-frame:nth-child(9) {
+        z-index: 39;
+      }
 
       .project-canvas-window {
         position: relative;
@@ -1894,26 +1918,66 @@
             >
             <div class="marquee-row-channel">
               <div class="marquee-inner-track">
-                <span class="tech-marquee-node">React <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">Next.js <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">TypeScript <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">JavaScript (ES6+) <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">HTML5 <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">CSS3 <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">Tailwind CSS <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">Zustand <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">Redux Toolkit <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">SWR <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">React <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">Next.js <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">TypeScript <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">JavaScript (ES6+) <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">HTML5 <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">CSS3 <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">Tailwind CSS <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">Zustand <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">Redux Toolkit <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">SWR <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node"
+                  >React <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Next.js <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >TypeScript <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >JavaScript (ES6+) <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >HTML5 <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >CSS3 <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Tailwind CSS <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Zustand <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Redux Toolkit <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >SWR <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >React <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Next.js <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >TypeScript <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >JavaScript (ES6+) <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >HTML5 <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >CSS3 <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Tailwind CSS <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Zustand <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Redux Toolkit <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >SWR <span class="marquee-node-bullet"></span
+                ></span>
               </div>
             </div>
           </div>
@@ -1924,26 +1988,66 @@
             >
             <div class="marquee-row-channel reverse-track">
               <div class="marquee-inner-track">
-                <span class="tech-marquee-node">Node.js <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">Express.js <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">Python <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">PHP <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">RESTful APIs <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">JWT Modules <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">MySQL <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">MongoDB <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">Supabase <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">Firebase Core <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">Node.js <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">Express.js <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">Python <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">PHP <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">RESTful APIs <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">JWT Modules <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">MySQL <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">MongoDB <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">Supabase <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">Firebase Core <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node"
+                  >Node.js <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Express.js <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Python <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >PHP <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >RESTful APIs <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >JWT Modules <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >MySQL <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >MongoDB <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Supabase <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Firebase Core <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Node.js <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Express.js <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Python <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >PHP <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >RESTful APIs <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >JWT Modules <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >MySQL <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >MongoDB <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Supabase <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Firebase Core <span class="marquee-node-bullet"></span
+                ></span>
               </div>
             </div>
           </div>
@@ -1954,24 +2058,60 @@
             >
             <div class="marquee-row-channel">
               <div class="marquee-inner-track">
-                <span class="tech-marquee-node">Git Ecosystem <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">GitHub Platform <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">Bitbucket Hub <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">Docker Engine <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">AWS Cloud (EC2/S3) <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">Vercel Edge <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">Postman Terminal <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">Figma Systems <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">CI/CD Automations <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">Git Ecosystem <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">GitHub Platform <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">Bitbucket Hub <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">Docker Engine <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">AWS Cloud (EC2/S3) <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">Vercel Edge <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">Postman Terminal <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">Figma Systems <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">CI/CD Automations <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node"
+                  >Git Ecosystem <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >GitHub Platform <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Bitbucket Hub <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Docker Engine <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >AWS Cloud (EC2/S3) <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Vercel Edge <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Postman Terminal <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Figma Systems <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >CI/CD Automations <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Git Ecosystem <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >GitHub Platform <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Bitbucket Hub <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Docker Engine <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >AWS Cloud (EC2/S3) <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Vercel Edge <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Postman Terminal <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Figma Systems <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >CI/CD Automations <span class="marquee-node-bullet"></span
+                ></span>
               </div>
             </div>
           </div>
@@ -1982,22 +2122,54 @@
             >
             <div class="marquee-row-channel reverse-track">
               <div class="marquee-inner-track">
-                <span class="tech-marquee-node">Claude Code <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">GitHub Copilot <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">OpenAI Core API <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">Anthropic Engine <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">Stripe Node <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">PayMongo Portal <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">PayPal API <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">Secure Webhooks <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">Claude Code <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">GitHub Copilot <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">OpenAI Core API <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">Anthropic Engine <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">Stripe Node <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">PayMongo Portal <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">PayPal API <span class="marquee-node-bullet"></span></span>
-                <span class="tech-marquee-node">Secure Webhooks <span class="marquee-node-bullet"></span></span>
+                <span class="tech-marquee-node"
+                  >Claude Code <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >GitHub Copilot <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >OpenAI Core API <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Anthropic Engine <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Stripe Node <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >PayMongo Portal <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >PayPal API <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Secure Webhooks <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Claude Code <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >GitHub Copilot <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >OpenAI Core API <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Anthropic Engine <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Stripe Node <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >PayMongo Portal <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >PayPal API <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Secure Webhooks <span class="marquee-node-bullet"></span
+                ></span>
               </div>
             </div>
           </div>
