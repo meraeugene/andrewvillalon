@@ -1,0 +1,108 @@
+[
+  {
+    "name": "Dink Lab",
+    "year": "2026",
+    "description": "Dink Lab is a pickleball court booking platform developed for a client business based in Koronadal City.",
+    "tags": [
+      "NextJS",
+      "Supabase",
+      "TypeScript",
+      "SWR",
+      "Tailwind CSS",
+      "ZOD",
+      "Nodemailer"
+    ],
+    "imageUrl": "assets/dinklab.png",
+    "liveUrl": "https://dinklab.vercel.app/",
+    "githubUrl": "https://github.com/meraeugene/DinkLab",
+    "createdAt": "2026-07-09T05:34:37.365Z"
+  },
+
+  {
+    "name": "SalesPro CRM",
+    "year": "2026",
+    "description": "SalesPro CRM is a full stack customer relationship management and sales tracking platform designed to help businesses manage companies, leads, contacts, deals, tasks, sales activities, and revenue analytics in one centralized system.",
+    "tags": [
+      "NextJS",
+      "Supabase",
+      "TypeScript",
+      "Tailwind",
+      "Recharts",
+      "Zustand"
+    ],
+    "imageUrl": "assets/salesprocrm.png",
+    "liveUrl": "https://salesprocrm-ph.vercel.app",
+    "githubUrl": "https://github.com/meraeugene/salespro-crm",
+    "createdAt": "2026-06-01T00:00:00.000Z"
+  },
+  {
+    "name": "ProBuild ERP",
+    "year": "2026",
+    "description": "An enterprise construction ERP platform focused on payroll automation, attendance tracking, budgeting, expenses, and financial analytics. Automated payroll computation from biometric attendance records.",
+    "tags": ["NextJS", "Supabase", "TypeScript", "Tailwind", "Recharts", "SWR"],
+    "imageUrl": "assets/probuild.png",
+    "liveUrl": "https://prodisenyo-probuild.vercel.app/",
+    "githubUrl": "https://github.com/meraeugene/prodisenyo-probuild",
+    "createdAt": "2026-05-01T00:00:00.000Z"
+  },
+  {
+    "name": "TwoGether AI Recommender",
+    "year": "2026",
+    "description": "A social movie platform that lets you stream and recommend movies with friends, chat in real time, and request personalized movie insights powered by Google's Gemini AI.",
+    "tags": ["NextJS", "Supabase", "Gemini AI", "Tailwind", "Zustand", "SWR"],
+    "imageUrl": "assets/twogether-v3.png",
+    "liveUrl": "https://www.twogether.watch/",
+    "githubUrl": "",
+    "createdAt": "2026-03-12T00:00:00.000Z"
+  },
+  {
+    "name": "Archivia - Machine Learning",
+    "year": "2025",
+    "description": "A full-stack web-based thesis management and adviser recommender system for USTP CDO. Features suitability matching using an SBERT-based recommendation algorithm with FAISS semantic search.",
+    "tags": ["NextJS", "Supabase", "TypeScript", "Tailwind", "Zustand", "SWR"],
+    "imageUrl": "assets/archivia.png",
+    "liveUrl": "",
+    "githubUrl": "",
+    "createdAt": "2025-12-01T00:00:00.000Z"
+  },
+  {
+    "name": "URL-Fortify",
+    "year": "2025",
+    "description": "A cybersecurity analysis web tool that helps detect viruses and phishing threats by scanning URLs or suspicious text in uploaded images.",
+    "tags": ["NextJS", "Supabase", "TypeScript", "Tailwind CSS"],
+    "imageUrl": "assets/fortify.png",
+    "liveUrl": "https://url-fortify.vercel.app",
+    "githubUrl": "https://github.com/meraeugene/url-fortify",
+    "createdAt": "2025-10-01T00:00:00.000Z"
+  },
+  {
+    "name": "Tim Hortons Clone",
+    "year": "2025",
+    "description": "A fully functional clone of a coffee shop e-commerce website. Integrated Stripe and PayPal checkouts, Cash-on-Delivery options, Google authentication, and store admin analytics.",
+    "tags": ["React", "Supabase", "Cloudinary", "Tailwind", "RTK", "Stripe"],
+    "imageUrl": "assets/timhortons.png",
+    "liveUrl": "https://tim-hortons-clone.onrender.com/",
+    "githubUrl": "https://github.com/meraeugene/tim-hortons-clone",
+    "createdAt": "2025-05-01T00:00:00.000Z"
+  },
+  {
+    "name": "Eli Studio",
+    "year": "2025",
+    "description": "Showcase landing and project display website for an interior architectural design company. Focuses on premium, minimalist visual grids and layout transitions.",
+    "tags": ["NextJS", "TypeScript", "Tailwind", "Framer-Motion"],
+    "imageUrl": "assets/elistudio.png",
+    "liveUrl": "https://elistudios.vercel.app/",
+    "githubUrl": "https://github.com/meraeugene/eli-studio",
+    "createdAt": "2025-03-01T00:00:00.000Z"
+  },
+  {
+    "name": "Elegant Vibes",
+    "year": "2024",
+    "description": "A fashion-focused website created to showcase high-fidelity layouts, micro-animations, and responsive design, adapted directly from a custom design concept.",
+    "tags": ["NextJS", "Tailwind CSS", "UI/UX Design"],
+    "imageUrl": "assets/elegantvibes.png",
+    "liveUrl": "https://fashion-ecommerce-andrew.vercel.app/",
+    "githubUrl": "https://github.com/meraeugene/fashion-ecommerce",
+    "createdAt": "2024-08-21T00:00:00.000Z"
+  }
+]

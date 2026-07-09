@@ -1,0 +1,14 @@
+   {
+     "name": "AppSend",
+     "year": "2026",
+     "description": "Easily send job applications to companies using Excel leads based on your chosen role and location. Mark applications as applied on your own device, track your progress, and view each company's website URL and email address in one place.",
+     "tags": [
+       "HTML",
+       "CSS",
+       "JavaScript"
+     ],
+     "imageUrl": "assets/appsend.png",
+     "liveUrl": "https://appsend.vercel.app/",
+     "githubUrl": "https://github.com/meraeugene/AppSend",
+     "createdAt": "2026-07-09T00:00:00.000Z"
+   },
