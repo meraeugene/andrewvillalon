@@ -1125,45 +1125,94 @@
       .proj-meta-actions {
         display: flex;
         align-items: center;
-        gap: 1rem;
+        flex-wrap: wrap;
+        gap: 0.75rem;
         border-top: 1px solid var(--border-color);
         padding-top: 1.25rem;
         width: 100%;
       }
 
       .proj-action-link {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.55rem;
+        min-height: 2.75rem;
+        padding: 0.82rem 1.15rem;
+        border: 1px solid var(--border-color);
+        border-radius: 999px;
+        background-color: var(--bg-secondary);
         font-family: "Space Grotesk", sans-serif;
         font-size: 0.75rem;
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.05em;
         color: var(--text-primary);
-        transition: color 0.3s ease;
+        overflow: hidden;
+        transition:
+          transform 0.3s ease,
+          border-color 0.3s ease,
+          background-color 0.3s ease,
+          color 0.3s ease,
+          box-shadow 0.3s ease;
       }
 
-      .proj-action-link a {
-        color: inherit;
-      }
-
-      .proj-action-link a:hover {
-        text-decoration: underline;
-        text-underline-offset: 4px;
+      .proj-action-icon {
+        width: 1rem;
+        height: 1rem;
+        flex: 0 0 auto;
+        color: currentColor;
+        transition:
+          transform 0.3s ease,
+          opacity 0.3s ease;
       }
 
       .proj-action-link.disabled-state {
+        background-color: transparent;
         color: var(--text-tertiary);
         cursor: not-allowed;
+        opacity: 0.72;
+      }
+
+      .proj-action-link.active-state {
+        text-decoration: none;
+      }
+
+      .proj-action-link.github-action {
+        background-color: transparent;
+      }
+
+      .proj-action-link.live-action {
+        background-color: var(--text-primary);
+        border-color: var(--text-primary);
+        color: var(--bg-primary);
+        box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.12);
       }
 
       .proj-action-link.active-state:hover {
-        text-decoration: underline;
-        text-underline-offset: 4px;
+        transform: translateY(-2px);
+        border-color: var(--text-primary);
+        box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.16);
+      }
+
+      .proj-action-link.github-action:hover {
+        background-color: var(--bg-secondary);
+      }
+
+      .proj-action-link.live-action:hover {
+        background-color: var(--bg-tertiary);
+        border-color: var(--text-primary);
+        color: var(--text-primary);
+      }
+
+      .proj-action-link.active-state:hover .proj-action-icon {
+        opacity: 1;
+        transform: translateX(2px) scale(1.08);
       }
 
       .proj-action-splitter {
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 0.75rem;
-        color: var(--border-color);
+        display: none;
       }
 
       /* --------------------------------------------------------------------------
@@ -2604,6 +2653,30 @@
         const stickyHeader = document.getElementById("sticky-header-node");
         const hudLabel = document.getElementById("hud-changing-label");
 
+        const projectActionIcons = {
+          github: `
+            <svg class="proj-action-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.26c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49v-1.9c-2.78.62-3.37-1.22-3.37-1.22-.45-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.36 1.12 2.93.86.09-.67.35-1.12.64-1.38-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.04 1.03-2.76-.1-.26-.45-1.31.1-2.72 0 0 .84-.28 2.75 1.05A9.34 9.34 0 0 1 12 6.93c.85 0 1.7.12 2.5.35 1.9-1.33 2.74-1.05 2.74-1.05.55 1.41.2 2.46.1 2.72.64.72 1.03 1.64 1.03 2.76 0 3.95-2.34 4.82-4.57 5.07.36.32.68.94.68 1.9v2.82c0 .27.18.59.69.49A10.04 10.04 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z"/>
+            </svg>
+          `,
+          external: `
+            <svg class="proj-action-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M9 7h8v8"/>
+              <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M15 17H7V9"/>
+            </svg>
+          `,
+          lock: `
+            <svg class="proj-action-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M7 11V8a5 5 0 0 1 10 0v3"/>
+              <rect width="14" height="10" x="5" y="11" fill="none" stroke="currentColor" stroke-width="2" rx="2"/>
+            </svg>
+          `,
+        };
+
+        function setProjectActionContent(element, iconName, label) {
+          element.innerHTML = `${projectActionIcons[iconName]}<span>${label}</span>`;
+        }
+
         function createProjectCard(project) {
           const frame = document.createElement("div");
           frame.className = "landscape-project-frame";
@@ -2657,15 +2730,19 @@
           if (project.githubUrl) {
             const github = document.createElement("a");
             github.href = project.githubUrl;
-            github.className = "proj-action-link active-state";
+            github.className = "proj-action-link active-state github-action";
             github.target = "_blank";
             github.rel = "noopener noreferrer";
-            github.textContent = "Public GitHub";
+            github.setAttribute(
+              "aria-label",
+              `Open ${project.name || "project"} GitHub repository`,
+            );
+            setProjectActionContent(github, "github", "GitHub");
             actions.appendChild(github);
           } else {
             const github = document.createElement("span");
-            github.className = "proj-action-link disabled-state";
-            github.textContent = "Private GitHub";
+            github.className = "proj-action-link disabled-state github-action";
+            setProjectActionContent(github, "lock", "Private Repo");
             actions.appendChild(github);
           }
 
@@ -2676,10 +2753,14 @@
 
             const live = document.createElement("a");
             live.href = project.liveUrl;
-            live.className = "proj-action-link active-state";
+            live.className = "proj-action-link active-state live-action";
             live.target = "_blank";
             live.rel = "noopener noreferrer";
-            live.textContent = "View Live";
+            live.setAttribute(
+              "aria-label",
+              `View ${project.name || "project"} live website`,
+            );
+            setProjectActionContent(live, "external", "View Live");
 
             actions.append(splitter, live);
           }

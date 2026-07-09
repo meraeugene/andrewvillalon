@@ -2,7 +2,7 @@
   {
     "name": "Dink Lab",
     "year": "2026",
-    "description": "Dink Lab is a pickleball court booking platform developed for a client business based in Koronadal City.",
+    "description": "A production-ready pickleball booking platform built for a Koronadal City client, streamlining court reservations, player coordination, and operational messaging through a polished Next.js experience.",
     "tags": [
       "NextJS",
       "Supabase",
@@ -17,11 +17,33 @@
     "githubUrl": "https://github.com/meraeugene/DinkLab",
     "createdAt": "2026-07-09T05:34:37.365Z"
   },
-
+  {
+    "name": "Mira AI Interviewer",
+    "year": "2026",
+    "description": "An AI-powered career assistant that transforms resume uploads into structured candidate profiles, tracks job applications through Kanban and table workflows, generates tailored Gemini cover letters, and delivers ElevenLabs voice synthesis for realistic interview preparation.",
+    "tags": [
+      "NextJS",
+      "Tailwind",
+      "Framer Motion",
+      "TanStack Table",
+      "Lucide React",
+      "Mammoth",
+      "PDF Parse",
+      "React Hook Form",
+      "Zod",
+      "Zustand",
+      "ElevenLabs",
+      "Voice Synthesis"
+    ],
+    "imageUrl": "assets/mira.png",
+    "liveUrl": "https://applywithmira.vercel.app",
+    "githubUrl": "https://github.com/meraeugene/job-tracker",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
   {
     "name": "SalesPro CRM",
     "year": "2026",
-    "description": "SalesPro CRM is a full stack customer relationship management and sales tracking platform designed to help businesses manage companies, leads, contacts, deals, tasks, sales activities, and revenue analytics in one centralized system.",
+    "description": "A full-stack CRM workspace that centralizes leads, contacts, deals, tasks, activities, and revenue analytics, giving sales teams a sharper command center for pipeline visibility and daily execution.",
     "tags": [
       "NextJS",
       "Supabase",
@@ -38,7 +60,7 @@
   {
     "name": "ProBuild ERP",
     "year": "2026",
-    "description": "An enterprise construction ERP platform focused on payroll automation, attendance tracking, budgeting, expenses, and financial analytics. Automated payroll computation from biometric attendance records.",
+    "description": "An enterprise-grade construction ERP that connects biometric attendance, payroll automation, budgeting, expenses, and financial analytics into one decision-ready operations system.",
     "tags": ["NextJS", "Supabase", "TypeScript", "Tailwind", "Recharts", "SWR"],
     "imageUrl": "assets/probuild.png",
     "liveUrl": "https://prodisenyo-probuild.vercel.app/",
@@ -48,7 +70,7 @@
   {
     "name": "TwoGether AI Recommender",
     "year": "2026",
-    "description": "A social movie platform that lets you stream and recommend movies with friends, chat in real time, and request personalized movie insights powered by Google's Gemini AI.",
+    "description": "A social streaming companion that blends real-time chat, shared movie discovery, and Gemini-powered recommendations to make choosing what to watch feel personal, collaborative, and fast.",
     "tags": ["NextJS", "Supabase", "Gemini AI", "Tailwind", "Zustand", "SWR"],
     "imageUrl": "assets/twogether-v3.png",
     "liveUrl": "https://www.twogether.watch/",
@@ -58,7 +80,7 @@
   {
     "name": "Archivia - Machine Learning",
     "year": "2025",
-    "description": "A full-stack web-based thesis management and adviser recommender system for USTP CDO. Features suitability matching using an SBERT-based recommendation algorithm with FAISS semantic search.",
+    "description": "A thesis management and adviser recommendation system for USTP CDO, using SBERT embeddings and FAISS semantic search to match students with suitable research mentors intelligently.",
     "tags": ["NextJS", "Supabase", "TypeScript", "Tailwind", "Zustand", "SWR"],
     "imageUrl": "assets/archivia.png",
     "liveUrl": "",
@@ -68,7 +90,7 @@
   {
     "name": "URL-Fortify",
     "year": "2025",
-    "description": "A cybersecurity analysis web tool that helps detect viruses and phishing threats by scanning URLs or suspicious text in uploaded images.",
+    "description": "A cybersecurity analysis tool that scans URLs and text extracted from images, helping users surface phishing signals and suspicious threats through a clear, security-focused workflow.",
     "tags": ["NextJS", "Supabase", "TypeScript", "Tailwind CSS"],
     "imageUrl": "assets/fortify.png",
     "liveUrl": "https://url-fortify.vercel.app",
@@ -78,7 +100,7 @@
   {
     "name": "Tim Hortons Clone",
     "year": "2025",
-    "description": "A fully functional clone of a coffee shop e-commerce website. Integrated Stripe and PayPal checkouts, Cash-on-Delivery options, Google authentication, and store admin analytics.",
+    "description": "A full e-commerce rebuild of a coffee shop experience, complete with Stripe, PayPal, cash-on-delivery, Google authentication, Cloudinary media, and admin analytics for store management.",
     "tags": ["React", "Supabase", "Cloudinary", "Tailwind", "RTK", "Stripe"],
     "imageUrl": "assets/timhortons.png",
     "liveUrl": "https://tim-hortons-clone.onrender.com/",
@@ -88,7 +110,7 @@
   {
     "name": "Eli Studio",
     "year": "2025",
-    "description": "Showcase landing and project display website for an interior architectural design company. Focuses on premium, minimalist visual grids and layout transitions.",
+    "description": "A refined portfolio website for an interior architecture studio, pairing minimalist editorial layouts with smooth transitions and premium project presentation built for visual impact.",
     "tags": ["NextJS", "TypeScript", "Tailwind", "Framer-Motion"],
     "imageUrl": "assets/elistudio.png",
     "liveUrl": "https://elistudios.vercel.app/",
@@ -98,7 +120,7 @@
   {
     "name": "Elegant Vibes",
     "year": "2024",
-    "description": "A fashion-focused website created to showcase high-fidelity layouts, micro-animations, and responsive design, adapted directly from a custom design concept.",
+    "description": "A fashion-forward storefront concept translated from custom design into a responsive web experience, featuring high-fidelity layouts, tasteful motion, and polished product storytelling.",
     "tags": ["NextJS", "Tailwind CSS", "UI/UX Design"],
     "imageUrl": "assets/elegantvibes.png",
     "liveUrl": "https://fashion-ecommerce-andrew.vercel.app/",
