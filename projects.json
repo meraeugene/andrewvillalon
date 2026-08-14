@@ -1,5 +1,25 @@
 [
   {
+    "name": "Prodisenyo Builders",
+    "year": "2026",
+    "description": "A polished corporate website for Prodisenyo Builders Corporation in Cagayan de Oro City, presenting its architectural, engineering, construction management, and total fit-out services, completed projects, company vision, and consultation pathways.",
+    "tags": ["NextJS", "@phosphor-icons/react", "SEO"],
+    "imageUrl": "assets/prodisenyo-builders.png",
+    "liveUrl": "https://www.prodisenyobuilders.online/",
+    "githubUrl": "",
+    "createdAt": "2026-08-14T10:55:19.000+08:00"
+  },
+  {
+    "name": "MRDepot",
+    "year": "2026",
+    "description": "A refined corporate showcase for MR Depot in Cagayan de Oro City, presenting custom modular kitchens, cabinets, wardrobes, completed interior projects, finishing materials, and streamlined quotation inquiries.",
+    "tags": ["NextJS", "TailwindCSS", "TypeScript", "SEO"],
+    "imageUrl": "assets/mrdepot.png",
+    "liveUrl": "https://www.mrdepot.online/",
+    "githubUrl": "",
+    "createdAt": "2026-08-14T10:55:18.000+08:00"
+  },
+  {
     "name": "Dink Lab",
     "year": "2026",
     "description": "A production-ready pickleball booking platform built for a Koronadal City client, streamlining court reservations, player coordination, and operational messaging through a polished Next.js experience.",

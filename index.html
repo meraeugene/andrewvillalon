@@ -981,9 +981,9 @@
         gap: 4.5rem;
         align-items: start;
         position: sticky;
-        top: 10vh;
+        top: 8vh;
         background-color: var(--bg-primary);
-        padding: 5rem 0 3rem 0;
+        padding: 2rem 0 3rem;
         will-change: transform;
         transition:
           filter 0.5s ease,
@@ -994,7 +994,7 @@
         .landscape-project-frame {
           grid-template-columns: 1fr;
           gap: 2.5rem;
-          padding: 3rem 0;
+          padding: 1.5rem 0 2.5rem;
         }
       }
 
@@ -1213,6 +1213,15 @@
 
       .proj-action-splitter {
         display: none;
+      }
+
+      @media (max-width: 768px) {
+        .landscape-project-frame {
+          position: relative;
+          top: auto;
+          gap: 1.75rem;
+          padding: 1rem 0 2rem;
+        }
       }
 
       /* --------------------------------------------------------------------------
@@ -1960,6 +1969,17 @@
         </div>
       </section>
 
+      <!-- PROJECTS SECTION -->
+      <section id="projects" class="projects-section">
+        <div class="editorial-header framer-reveal">
+          <h2 class="editorial-title">Projects</h2>
+          <span class="editorial-label">Selected Works</span>
+        </div>
+
+        <div class="landscape-gallery-grid" id="projects-gallery">
+        </div>
+      </section>
+
       <!-- TECHNOLOGIES SECTION -->
       <section id="skills" class="skills-section">
         <div class="editorial-header framer-reveal">
@@ -2231,17 +2251,6 @@
         </div>
       </section>
 
-      <!-- PROJECTS SECTION -->
-      <section id="projects" class="projects-section">
-        <div class="editorial-header framer-reveal">
-          <h2 class="editorial-title">Projects</h2>
-          <span class="editorial-label">Selected Works</span>
-        </div>
-
-        <div class="landscape-gallery-grid" id="projects-gallery">
-        </div>
-      </section>
-
       <!-- ABOUT ME SECTION -->
       <section id="about" class="about-section">
         <div class="about-container">
@@ -2472,10 +2481,6 @@
           <span class="dock-dot"></span>
           <span class="dock-text">Home</span>
         </a>
-        <a href="#skills" class="dock-item" data-target="skills">
-          <span class="dock-dot"></span>
-          <span class="dock-text">Skills</span>
-        </a>
         <a href="#projects" class="dock-item" data-target="projects">
           <span class="dock-dot"></span>
           <span class="dock-text">Projects</span>
@@ -2483,6 +2488,10 @@
         <a href="#about" class="dock-item" data-target="about">
           <span class="dock-dot"></span>
           <span class="dock-text">About</span>
+        </a>
+        <a href="#skills" class="dock-item" data-target="skills">
+          <span class="dock-dot"></span>
+          <span class="dock-text">Skills</span>
         </a>
         <a href="#contact" class="dock-item" data-target="contact">
           <span class="dock-dot"></span>
@@ -2542,6 +2551,12 @@
       document.addEventListener("DOMContentLoaded", () => {
         const splashScreen = document.getElementById("splash-screen");
         const splashCounter = document.getElementById("splash-counter");
+        const aboutSection = document.getElementById("about");
+        const skillsSection = document.getElementById("skills");
+
+        if (aboutSection && skillsSection) {
+          aboutSection.insertAdjacentElement("afterend", skillsSection);
+        }
 
         document.body.style.overflow = "hidden";
 
