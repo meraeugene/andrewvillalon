@@ -76,12 +76,6 @@
         --dock-shadow: rgba(0, 0, 0, 0.03);
         --dock-active: #000000;
 
-        --cursor-color: #000000;
-        --flashlight-glow: radial-gradient(
-          circle 150px at var(--mouse-x, 0) var(--mouse-y, 0),
-          rgba(0, 0, 0, 0.02),
-          transparent 80%
-        );
         --noise-opacity: 0.015;
       }
 
@@ -105,12 +99,6 @@
         --dock-shadow: rgba(0, 0, 0, 0.5);
         --dock-active: #ffffff;
 
-        --cursor-color: #ffffff;
-        --flashlight-glow: radial-gradient(
-          circle 250px at var(--mouse-x, 0) var(--mouse-y, 0),
-          rgba(255, 255, 255, 0.045),
-          transparent 80%
-        );
         --noise-opacity: 0.025;
       }
 
@@ -138,32 +126,6 @@
         transition:
           background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1),
           color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        cursor: none;
-      }
-
-      /* Ambient Dynamic Flashlight Overlay */
-      body::before {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: var(--flashlight-glow);
-        pointer-events: none;
-        z-index: 9996;
-        will-change: background;
-      }
-
-      @media (pointer: coarse) {
-        body {
-          cursor: auto;
-        }
-
-        .custom-cursor,
-        body::before {
-          display: none !important;
-        }
       }
 
       a,
@@ -171,9 +133,14 @@
       input,
       textarea,
       .project-canvas-window.clickable-window {
-        cursor: none;
         position: relative;
         z-index: 9990;
+      }
+
+      a,
+      button,
+      .project-canvas-window.clickable-window {
+        cursor: pointer;
       }
 
       /* --------------------------------------------------------------------------
@@ -425,7 +392,7 @@
       }
 
       /* --------------------------------------------------------------------------
-   05. CUTE POINTY ARROWHEAD SHARP CURSOR System
+   05. NOISE OVERLAY
    -------------------------------------------------------------------------- */
       .noise-overlay {
         position: fixed;
@@ -437,42 +404,6 @@
         pointer-events: none;
         opacity: var(--noise-opacity);
         background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-      }
-
-      .custom-cursor {
-        position: fixed;
-        width: 0;
-        height: 0;
-        border-left: 7px solid transparent;
-        border-right: 7px solid transparent;
-        border-bottom: 16px solid var(--cursor-color);
-        transform: translate(-50%, -50%) rotate(-35deg);
-        pointer-events: none;
-        z-index: 100000 !important;
-        will-change: transform;
-        transition:
-          transform 0.1s ease-out,
-          border-bottom-color 0.3s ease;
-      }
-
-      body.cursor-hovering-active .custom-cursor {
-        transform: translate(-50%, -50%) rotate(-35deg) scale(1.3);
-      }
-
-      .cursor-glow {
-        position: fixed;
-        width: 400px;
-        height: 400px;
-        background: radial-gradient(
-          circle,
-          var(--glow-color) 0%,
-          rgba(0, 0, 0, 0) 70%
-        );
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 9998;
-        transform: translate(-50%, -50%);
-        transition: transform 0.2s ease-out;
       }
 
       .portfolio-container {
@@ -1037,10 +968,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-      }
-
-      .project-canvas-window.clickable-window {
-        cursor: none;
       }
 
       .project-canvas-window img {
@@ -1794,7 +1721,6 @@
         align-items: center;
         justify-content: center;
         color: var(--text-secondary);
-        cursor: none;
         transition:
           background-color 0.3s ease,
           color 0.3s ease,
@@ -1904,10 +1830,6 @@
     </div>
 
     <div class="noise-overlay"></div>
-
-    <!-- Triangle Sharp Pointy Custom Cursor -->
-    <div class="custom-cursor" id="custom-cursor"></div>
-    <div class="cursor-glow" id="cursor-glow"></div>
 
     <!-- ADAPTIVE HUD NAVIGATION BAR LAYER -->
     <div class="hero-top-bar" id="sticky-header-node">
@@ -2616,45 +2538,6 @@
           localStorage.setItem("andrew-portfolio-theme", newTheme);
         });
 
-        const customCursor = document.getElementById("custom-cursor");
-        const cursorGlow = document.getElementById("cursor-glow");
-
-        let mouseX = window.innerWidth / 2,
-          mouseY = window.innerHeight / 2;
-        let cursorX = mouseX,
-          cursorY = mouseY,
-          glowX = mouseX,
-          glowY = mouseY;
-
-        window.addEventListener("mousemove", (e) => {
-          mouseX = e.clientX;
-          mouseY = e.clientY;
-
-          document.documentElement.style.setProperty(
-            "--mouse-x",
-            `${e.clientX}px`,
-          );
-          document.documentElement.style.setProperty(
-            "--mouse-y",
-            `${e.clientY}px`,
-          );
-        });
-
-        function animateCursor() {
-          cursorX += (mouseX - cursorX) * 0.25;
-          cursorY += (mouseY - cursorY) * 0.25;
-          glowX += (mouseX - glowX) * 0.06;
-          glowY += (mouseY - glowY) * 0.06;
-
-          customCursor.style.left = `${cursorX}px`;
-          customCursor.style.top = `${cursorY}px`;
-          cursorGlow.style.left = `${glowX}px`;
-          cursorGlow.style.top = `${glowY}px`;
-
-          requestAnimationFrame(animateCursor);
-        }
-        animateCursor();
-
         const heroParallaxTarget = document.getElementById(
           "hero-parallax-target",
         );
@@ -2825,7 +2708,6 @@
             card.style.zIndex = String(31 + index);
           });
           initClickableWindows();
-          initCursorEvents();
           initFramerObserver();
         }
 
@@ -2986,21 +2868,6 @@
           targets.forEach((t) => revealObserver.observe(t));
         }
 
-        function initCursorEvents() {
-          const hoverables = document.querySelectorAll(
-            "a, button, input, textarea, .landscape-project-frame, .tech-marquee-node, .clickable-window",
-          );
-          hoverables.forEach((el) => {
-            if (el.dataset.cursorBound === "true") return;
-            el.dataset.cursorBound = "true";
-            el.addEventListener("mouseenter", () =>
-              document.body.classList.add("cursor-hovering-active"),
-            );
-            el.addEventListener("mouseleave", () =>
-              document.body.classList.remove("cursor-hovering-active"),
-            );
-          });
-        }
         refreshProjectEnhancements();
 
         const clockElement = document.getElementById("digital-clock");
