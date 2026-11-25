@@ -2213,7 +2213,8 @@
             year: "2026",
             imageUrl: "assets/elegantvibes.png",
             description:
-              "Clean web design focused on calm spacing, readable text, and balanced page sections.",
+              "A fashion-forward storefront concept translated from custom design into a responsive web experience, featuring high-fidelity layouts, tasteful motion, and polished product storytelling.",
+            techs: ["Next.js", "Tailwind CSS", "UI/UX Design"],
             tags: ["Web UI", "Visual Style", "Responsive"],
             liveUrl: "",
             githubUrl: "",
@@ -2224,7 +2225,8 @@
             year: "2025",
             imageUrl: "assets/elistudio.png",
             description:
-              "Clean landing page and studio layout highlighting visual work without clutter.",
+              "A refined portfolio website for an interior architecture studio, pairing minimalist editorial layouts with smooth transitions and premium project presentation built for visual impact.",
+            techs: ["Next.js", "TypeScript", "Tailwind", "Framer Motion"],
             tags: ["Landing Page", "UI Layout", "Web Design"],
             liveUrl: "https://eli-studio-phi.vercel.app/",
             githubUrl: "https://github.com/meraeugene/eli-studio",
@@ -2235,7 +2237,16 @@
             year: "2025",
             imageUrl: "assets/dinklab.png",
             description:
-              "Web layout and visual presentation focused on clear sections, strong type, and simple navigation.",
+              "A production-ready pickleball booking platform built for a Koronadal City client, streamlining court reservations, player coordination, and operational messaging through a polished Next.js experience.",
+            techs: [
+              "Next.js",
+              "Supabase",
+              "TypeScript",
+              "SWR",
+              "Tailwind",
+              "Zod",
+              "Nodemailer",
+            ],
             tags: ["Web Design", "Visual Layout", "Prototype"],
             liveUrl: "https://dinklab.app/",
             githubUrl: "https://github.com/meraeugene/DinkLab",
@@ -2269,7 +2280,8 @@
             year: "2026",
             imageUrl: "assets/prodisenyo-builders.png",
             description:
-              "Company website built for Prodisenyo Builders to show services, past work, and project details in a clean layout.",
+              "A polished corporate website for Prodisenyo Builders Corporation in Cagayan de Oro City, presenting its architectural, engineering, construction management, and total fit-out services, completed projects, company vision, and consultation pathways.",
+            techs: ["Next.js", "@phosphor-icons/react", "SEO"],
             tags: ["Web UI", "Responsive Layout", "Live Site"],
             liveUrl: "https://prodisenyo-builders.vercel.app/",
             githubUrl: "https://github.com/meraeugene/prodisenyo-builders",
@@ -2293,7 +2305,15 @@
             year: "2026",
             imageUrl: "assets/probuild.png",
             description:
-              "Internal management screens for staff across site engineering, finance, and management to track projects and budgets.",
+              "An enterprise-grade construction ERP that connects biometric attendance, payroll automation, budgeting, expenses, and financial analytics into one decision-ready operations system.",
+            techs: [
+              "Next.js",
+              "Supabase",
+              "TypeScript",
+              "Tailwind",
+              "Recharts",
+              "SWR",
+            ],
             tags: ["Dashboard UI", "Web App", "Clean Layout"],
             liveUrl: "https://prodisenyo-probuild.vercel.app/",
             githubUrl: "",
@@ -2305,7 +2325,15 @@
             year: "2026",
             imageUrl: "assets/archivia.png",
             description:
-              "Digital archive and search interface for student theses and adviser matching at USTP Cagayan de Oro.",
+              "A thesis management and adviser recommendation system for USTP CDO, using SBERT embeddings and FAISS semantic search to match students with suitable research mentors intelligently.",
+            techs: [
+              "Next.js",
+              "Supabase",
+              "TypeScript",
+              "Tailwind",
+              "Zustand",
+              "SWR",
+            ],
             tags: ["Search UI", "Web Design", "Academic Tool"],
             liveUrl: "",
             githubUrl: "",
@@ -2317,7 +2345,8 @@
             year: "2025",
             imageUrl: "assets/fortify.png",
             description:
-              "Link check interface showing clear status results and simple input controls.",
+              "A cybersecurity analysis tool that scans URLs and text extracted from images, helping users surface phishing signals and suspicious threats through a clear, security-focused workflow.",
+            techs: ["Next.js", "Supabase", "TypeScript", "Tailwind CSS"],
             tags: ["Tool UI", "Web App", "Clean States"],
             liveUrl: "https://url-fortify-topaz.vercel.app/",
             githubUrl: "https://github.com/meraeugene/url-fortify",
@@ -2460,10 +2489,11 @@
 
           const tags = document.createElement("div");
           tags.className = "proj-meta-tags-row";
-          (project.tags || []).forEach((tag) => {
-            const tagEl = document.createElement("span");
-            tagEl.textContent = tag;
-            tags.appendChild(tagEl);
+          tags.setAttribute("aria-label", "Technologies used");
+          (project.techs || []).forEach((tech) => {
+            const techEl = document.createElement("span");
+            techEl.textContent = tech;
+            tags.appendChild(techEl);
           });
 
           metaContent.append(rolePill, header, description, tags);
