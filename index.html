@@ -1781,23 +1781,25 @@
 .focus-row .exp-location { line-height: 1.65; font-size: 0.95rem; font-family: "Plus Jakarta Sans", sans-serif; }
 .journey-row {
   display: grid;
-  grid-template-columns: 0.8fr 2.2fr;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 2.2fr);
   gap: 2.5rem;
   padding: 2.25rem 0;
   border-bottom: 1px solid var(--border-color);
   align-items: baseline;
-  transition: padding-left 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease;
+  transition: background-color 0.4s ease;
 }
-.journey-row:hover { padding-left: 1rem; background-color: var(--bg-secondary); }
-.journey-row.is-now .journey-when::before {
+.journey-row:hover { background-color: var(--bg-secondary); }
+.journey-row.is-now .journey-when::after {
   content: "";
   display: inline-block;
   width: 8px; height: 8px;
-  margin-right: 0.6rem;
+  margin-left: 0.6rem;
   border-radius: 50%;
   background: var(--text-primary);
 }
 .journey-when {
+  text-align: left;
+  white-space: nowrap;
   font-family: "Space Grotesk", sans-serif;
   font-size: 0.75rem;
   font-weight: 600;
@@ -1927,44 +1929,6 @@
             <span class="exp-location">Prodisenyo Builders Corp., Cagayan de Oro<span class="exp-detail">Built the company website solo and the attendance, payroll, budgeting, and expense approval modules of its construction ERP.</span></span>
             <span class="exp-period">Feb 2026 – May 2026</span>
           </div>
-        </div>
-      </section>
-
-      <section id="focus" class="focus-section">
-        <div class="editorial-header framer-reveal">
-          <h2 class="editorial-title">What I Do</h2>
-          <span class="editorial-label">Focus Areas</span>
-        </div>
-        <p class="focus-lead framer-reveal">
-          I work with businesses that still run on <strong>manual steps, scattered spreadsheets, and chat threads</strong>, and turn them into systems their teams can trust.
-        </p>
-        <div class="experience-list">
-          <div class="experience-row focus-row framer-reveal">
-            <h3 class="exp-role">Operational Digitalization</h3>
-            <span class="exp-location">Turning uploaded biometric attendance files into payroll with deductions and adjustments, and centralizing company expenses that used to live in separate Excel files.</span>
-            <span class="exp-period">Payroll ERP, GMEA Expenses</span>
-          </div>
-          <div class="experience-row focus-row framer-reveal delay-1">
-            <h3 class="exp-role">Workflow Automation</h3>
-            <span class="exp-location">Real-time slot availability that prevents double booking, payment proofs that admins approve or reject, and role-based approvals such as foremen requesting materials for CEO sign-off.</span>
-            <span class="exp-period">DinkLab, Probuild</span>
-          </div>
-          <div class="experience-row focus-row framer-reveal delay-2">
-            <h3 class="exp-role">Reliable Web Systems</h3>
-            <span class="exp-location">Responsive, SEO-ready sites and apps with filterable catalogs, contact forms, and live deployments that clients use every day.</span>
-            <span class="exp-period">Mr Depot, Prodisenyo, Twogether</span>
-          </div>
-          <div class="experience-row focus-row framer-reveal delay-3">
-            <h3 class="exp-role">Search and Security Tools</h3>
-            <span class="exp-location">SBERT embeddings with FAISS retrieval for thesis search and adviser matching, and link and image-text scanning that flags phishing signs.</span>
-            <span class="exp-period">Archivia, Fortify</span>
-          </div>
-        </div>
-        <div class="impact-strip framer-reveal">
-          <div class="impact-item"><span class="impact-num">~700</span><span class="impact-label">bookings handled on DinkLab</span></div>
-          <div class="impact-item"><span class="impact-num">35</span><span class="impact-label">projects presented on the Prodisenyo site</span></div>
-          <div class="impact-item"><span class="impact-num">6</span><span class="impact-label">user roles in the construction ERP</span></div>
-          <div class="impact-item"><span class="impact-num">23</span><span class="impact-label">issues resolved before launch after my QA report</span></div>
         </div>
       </section>
 
@@ -2513,10 +2477,6 @@
         <a href="#experience" class="dock-item" data-target="experience">
           <span class="dock-dot"></span>
           <span class="dock-text">Experience</span>
-        </a>
-        <a href="#focus" class="dock-item" data-target="focus">
-          <span class="dock-dot"></span>
-          <span class="dock-text">Focus</span>
         </a>
         <a href="#projects" class="dock-item" data-target="projects">
           <span class="dock-dot"></span>
