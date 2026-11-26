@@ -133,7 +133,7 @@
         text-align: center;
         padding: 4rem;
         opacity: 1;
-        transition: visibility 0s linear 0.6s;
+        transition: visibility 0s linear 0.3s;
       }
 
       .splash-logo-wrap {
@@ -150,8 +150,8 @@
         opacity: 0;
         transform: translate3d(-30px, 0, 0);
         transition:
-          transform 0.6s cubic-bezier(0.85, 0, 0.15, 1),
-          opacity 0.6s cubic-bezier(0.85, 0, 0.15, 1);
+          transform 0.3s cubic-bezier(0.85, 0, 0.15, 1),
+          opacity 0.3s cubic-bezier(0.85, 0, 0.15, 1);
       }
 
       .splash-screen.entering .splash-logo {
@@ -232,8 +232,8 @@
         visibility: hidden;
         pointer-events: none;
         transition:
-          opacity 0.4s ease,
-          visibility 0.4s step-end;
+          opacity 0.2s ease,
+          visibility 0.2s step-end;
       }
 
       .splash-statement-wrap {
@@ -258,7 +258,7 @@
         text-transform: uppercase;
         letter-spacing: -0.02em;
         transform: translate3d(0, 100%, 0);
-        transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1);
+        transition: transform 0.3s cubic-bezier(0.85, 0, 0.15, 1);
       }
 
       .splash-sub-portfolio {
@@ -269,7 +269,7 @@
         text-transform: lowercase;
         margin-top: 0.35rem;
         transform: translate3d(0, 100%, 0);
-        transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1);
+        transition: transform 0.3s cubic-bezier(0.85, 0, 0.15, 1);
       }
 
       .splash-screen.entering .splash-header-title,
@@ -292,8 +292,8 @@
         line-height: 0.8;
         letter-spacing: -0.04em;
         transition:
-          transform 0.6s cubic-bezier(0.85, 0, 0.15, 1),
-          opacity 0.6s cubic-bezier(0.85, 0, 0.15, 1);
+          transform 0.3s cubic-bezier(0.85, 0, 0.15, 1),
+          opacity 0.3s cubic-bezier(0.85, 0, 0.15, 1);
       }
 
       @media (max-width: 768px) {
@@ -1609,6 +1609,191 @@
           height: 40px;
         }
       }
+    /* ===== 3D + MOTION UPGRADE ===== */
+
+/* Scroll progress line */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: var(--text-primary);
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  z-index: 10001;
+  pointer-events: none;
+}
+
+/* Cursor spotlight */
+.cursor-spotlight {
+  position: fixed;
+  inset: 0;
+  z-index: 9995;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  background: radial-gradient(
+    480px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(127, 127, 127, 0.1),
+    transparent 60%
+  );
+}
+.cursor-spotlight.on { opacity: 1; }
+
+/* Hero: 3D depth that follows the cursor */
+.hero-center-display { perspective: 1200px; }
+.hero-main-h1.revealed {
+  transform: translate3d(0, 0, 0)
+    rotateX(var(--hero-rx, 0deg)) rotateY(var(--hero-ry, 0deg));
+  transform-style: preserve-3d;
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hero-main-h1 em {
+  display: inline-block;
+  transform: translateZ(60px);
+}
+
+/* Project cards: 3D tilt with moving glare */
+.projects-section { perspective: 1600px; }
+.landscape-gallery-grid { perspective: 1600px; }
+.project-canvas-window {
+  transform-style: preserve-3d;
+  transform: rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.3s ease,
+    box-shadow 0.5s ease;
+}
+.project-canvas-window.is-tilting {
+  transition:
+    transform 0.08s linear,
+    opacity 0.3s ease,
+    box-shadow 0.5s ease;
+  box-shadow: 0 40px 70px -30px rgba(0, 0, 0, 0.55);
+}
+.project-canvas-window .glare {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  background: radial-gradient(
+    380px circle at var(--gx, 50%) var(--gy, 50%),
+    rgba(255, 255, 255, 0.22),
+    transparent 55%
+  );
+  mix-blend-mode: overlay;
+}
+.project-canvas-window.is-tilting .glare { opacity: 1; }
+.project-meta-editorial { transform: translateZ(0); }
+
+/* Tags pop forward on hover */
+.proj-meta-tags-row span {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.proj-meta-tags-row span:hover { transform: translateY(-3px) scale(1.05); }
+
+/* Experience rows slide on hover */
+.experience-row {
+  transition: padding-left 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.4s ease;
+}
+.experience-row:hover {
+  padding-left: 1rem;
+  background-color: var(--bg-secondary);
+}
+
+/* Portrait: soft float when idle */
+@keyframes portraitFloat {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -8px; }
+}
+.about-col-portrait { animation: portraitFloat 6s ease-in-out infinite; }
+
+/* Respect accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .about-col-portrait { animation: none; }
+  .cursor-spotlight, .scroll-progress { display: none; }
+  .project-canvas-window,
+  .hero-main-h1.revealed { transform: none !important; }
+}
+
+/* ===== NEW SECTIONS: FOCUS + JOURNEY ===== */
+.exp-detail {
+  display: block;
+  margin-top: 0.75rem;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--text-tertiary);
+  max-width: 520px;
+}
+.impact-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-top: 4rem;
+}
+.impact-item { display: flex; flex-direction: column; gap: 0.6rem; }
+.impact-num {
+  font-family: "Instrument Serif", serif;
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  line-height: 0.9;
+}
+.impact-label { font-size: 0.9rem; line-height: 1.5; color: var(--text-secondary); max-width: 200px; }
+@media (max-width: 768px) { .impact-strip { grid-template-columns: 1fr 1fr; } }
+.focus-section, .journey-section {
+  padding: 7rem 0;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-primary);
+  position: relative;
+  z-index: 35;
+}
+.focus-lead {
+  max-width: 560px;
+  margin-bottom: 3rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  font-weight: 300;
+}
+.focus-lead strong { color: var(--text-primary); font-weight: 500; }
+.focus-row .exp-location { line-height: 1.65; font-size: 0.95rem; font-family: "Plus Jakarta Sans", sans-serif; }
+.journey-row {
+  display: grid;
+  grid-template-columns: 0.8fr 2.2fr;
+  gap: 2.5rem;
+  padding: 2.25rem 0;
+  border-bottom: 1px solid var(--border-color);
+  align-items: baseline;
+  transition: padding-left 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease;
+}
+.journey-row:hover { padding-left: 1rem; background-color: var(--bg-secondary); }
+.journey-row.is-now .journey-when::before {
+  content: "";
+  display: inline-block;
+  width: 8px; height: 8px;
+  margin-right: 0.6rem;
+  border-radius: 50%;
+  background: var(--text-primary);
+}
+.journey-when {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+.journey-what { display: flex; flex-direction: column; gap: 0.5rem; }
+.journey-detail { font-size: 0.95rem; line-height: 1.65; color: var(--text-secondary); max-width: 640px; }
+@media (max-width: 991px) {
+  .journey-row { grid-template-columns: 1fr; gap: 0.65rem; }
+}
+
     </style>
   </head>
 
@@ -1707,25 +1892,62 @@
         <div class="experience-list">
           <div class="experience-row framer-reveal">
             <h3 class="exp-role">Software Engineer</h3>
-            <span class="exp-location"
-              >Prodisenyo Builders Corp., Cagayan de Oro</span
-            >
+            <span class="exp-location">Prodisenyo Builders Corp., Cagayan de Oro<span class="exp-detail">Built a payroll ERP that turns biometric attendance files into payroll, an expense tracker for GMEA’s HR that replaced per-project Excel files, and the MR Depot website.</span></span>
             <span class="exp-period">July 2026 – Present</span>
           </div>
-
           <div class="experience-row framer-reveal delay-1">
+            <h3 class="exp-role">Freelance Full-Stack Developer</h3>
+            <span class="exp-location">DinkLab, Koronadal City<span class="exp-detail">Built and run a booking platform for a two-court pickleball facility, replacing spreadsheets, under a paid monthly retainer.</span></span>
+            <span class="exp-period">July 2026 – Present</span>
+          </div>
+          <div class="experience-row framer-reveal delay-2">
             <h3 class="exp-role">Frontend Developer Intern</h3>
-            <span class="exp-location">Open Sesame PH, Makati City (Remote)</span>
+            <span class="exp-location">Open Sesame PH, Makati City (Remote)<span class="exp-detail">Developed six features for a foreclosed-property platform with 60+ listings, and wrote a 24-page QA report that helped resolve 23 issues before launch.</span></span>
             <span class="exp-period">May 2026 – June 2026</span>
           </div>
-
-          <div class="experience-row framer-reveal delay-2">
+          <div class="experience-row framer-reveal delay-3">
             <h3 class="exp-role">Software Engineer Intern</h3>
-            <span class="exp-location"
-              >Prodisenyo Builders Corp., Cagayan de Oro</span
-            >
+            <span class="exp-location">Prodisenyo Builders Corp., Cagayan de Oro<span class="exp-detail">Built the company website solo and the attendance, payroll, budgeting, and expense approval modules of its construction ERP.</span></span>
             <span class="exp-period">Feb 2026 – May 2026</span>
           </div>
+        </div>
+      </section>
+
+      <section id="focus" class="focus-section">
+        <div class="editorial-header framer-reveal">
+          <h2 class="editorial-title">What I Do</h2>
+          <span class="editorial-label">Focus Areas</span>
+        </div>
+        <p class="focus-lead framer-reveal">
+          I work with businesses that still run on <strong>manual steps, scattered spreadsheets, and chat threads</strong>, and turn them into systems their teams can trust.
+        </p>
+        <div class="experience-list">
+          <div class="experience-row focus-row framer-reveal">
+            <h3 class="exp-role">Operational Digitalization</h3>
+            <span class="exp-location">Turning uploaded biometric attendance files into payroll with deductions and adjustments, and centralizing company expenses that used to live in separate Excel files.</span>
+            <span class="exp-period">Payroll ERP, GMEA Expenses</span>
+          </div>
+          <div class="experience-row focus-row framer-reveal delay-1">
+            <h3 class="exp-role">Workflow Automation</h3>
+            <span class="exp-location">Real-time slot availability that prevents double booking, payment proofs that admins approve or reject, and role-based approvals such as foremen requesting materials for CEO sign-off.</span>
+            <span class="exp-period">DinkLab, Probuild</span>
+          </div>
+          <div class="experience-row focus-row framer-reveal delay-2">
+            <h3 class="exp-role">Reliable Web Systems</h3>
+            <span class="exp-location">Responsive, SEO-ready sites and apps with filterable catalogs, contact forms, and live deployments that clients use every day.</span>
+            <span class="exp-period">Mr Depot, Prodisenyo, Twogether</span>
+          </div>
+          <div class="experience-row focus-row framer-reveal delay-3">
+            <h3 class="exp-role">Search and Security Tools</h3>
+            <span class="exp-location">SBERT embeddings with FAISS retrieval for thesis search and adviser matching, and link and image-text scanning that flags phishing signs.</span>
+            <span class="exp-period">Archivia, Fortify</span>
+          </div>
+        </div>
+        <div class="impact-strip framer-reveal">
+          <div class="impact-item"><span class="impact-num">~700</span><span class="impact-label">bookings handled on DinkLab</span></div>
+          <div class="impact-item"><span class="impact-num">35</span><span class="impact-label">projects presented on the Prodisenyo site</span></div>
+          <div class="impact-item"><span class="impact-num">6</span><span class="impact-label">user roles in the construction ERP</span></div>
+          <div class="impact-item"><span class="impact-num">23</span><span class="impact-label">issues resolved before launch after my QA report</span></div>
         </div>
       </section>
 
@@ -1780,6 +2002,10 @@
                   ></span
                 >
               </div>
+              <div class="spec-row">
+                <span class="spec-label">LANGUAGES</span>
+                <span class="spec-val">English, Tagalog</span>
+              </div>
             </div>
           </div>
 
@@ -1815,7 +2041,62 @@
                   >
                   <span class="cert-issuer">freeCodeCamp • Sep 2024</span>
                 </div>
+                <div class="cert-item">
+                  <span class="cert-name">JavaScript Essentials 1</span>
+                  <span class="cert-issuer">Cisco Networking Academy • Jun 2026</span>
+                </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="journey" class="journey-section">
+        <div class="editorial-header framer-reveal">
+          <h2 class="editorial-title">My Journey</h2>
+          <span class="editorial-label">From First Website to Full-Time Engineer</span>
+        </div>
+        <div class="experience-list">
+          <div class="journey-row  framer-reveal">
+            <span class="journey-when">Aug 2022</span>
+            <div class="journey-what">
+              <h3 class="exp-role">Started building for the web</h3>
+              <p class="journey-detail">Earned the Responsive Web Design certificate from freeCodeCamp and began building websites and apps.</p>
+            </div>
+          </div>
+          <div class="journey-row  framer-reveal delay-1">
+            <span class="journey-when">2024</span>
+            <div class="journey-what">
+              <h3 class="exp-role">Went deeper into JavaScript</h3>
+              <p class="journey-detail">Completed Frontend Development Libraries (Feb) and JavaScript Algorithms and Data Structures (Sep).</p>
+            </div>
+          </div>
+          <div class="journey-row  framer-reveal delay-2">
+            <span class="journey-when">Feb 2026</span>
+            <div class="journey-what">
+              <h3 class="exp-role">Software Engineer Intern</h3>
+              <p class="journey-detail">Joined Prodisenyo Builders Corp., built its company website solo, and developed the ERP’s payroll and approval modules.</p>
+            </div>
+          </div>
+          <div class="journey-row  framer-reveal">
+            <span class="journey-when">May 2026</span>
+            <div class="journey-what">
+              <h3 class="exp-role">Frontend Developer Intern</h3>
+              <p class="journey-detail">Worked remotely with Open Sesame PH and found nine usability issues by testing across phones and tablets.</p>
+            </div>
+          </div>
+          <div class="journey-row  framer-reveal delay-1">
+            <span class="journey-when">Jun 2026</span>
+            <div class="journey-what">
+              <h3 class="exp-role">Graduated with Best Capstone</h3>
+              <p class="journey-detail">Finished my BS in Information Technology at USTP and won the Best Capstone Award for Archivia, a solo-built AI platform supporting SDG 4.</p>
+            </div>
+          </div>
+          <div class="journey-row is-now framer-reveal delay-2">
+            <span class="journey-when">Jul 2026</span>
+            <div class="journey-what">
+              <h3 class="exp-role">Engineer and Freelancer</h3>
+              <p class="journey-detail">Now a full-time Software Engineer at Prodisenyo and the freelance developer behind DinkLab.</p>
             </div>
           </div>
         </div>
@@ -2033,13 +2314,10 @@
             <div class="marquee-row-channel reverse-track">
               <div class="marquee-inner-track">
                 <span class="tech-marquee-node"
-                  >Claude <span class="marquee-node-bullet"></span
+                  >OpenAI API <span class="marquee-node-bullet"></span
                 ></span>
                 <span class="tech-marquee-node"
-                  >Codex <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >Gemini <span class="marquee-node-bullet"></span
+                  >Anthropic API <span class="marquee-node-bullet"></span
                 ></span>
                 <span class="tech-marquee-node"
                   >SBERT <span class="marquee-node-bullet"></span
@@ -2060,13 +2338,10 @@
                   >Webhooks <span class="marquee-node-bullet"></span
                 ></span>
                 <span class="tech-marquee-node"
-                  >Claude <span class="marquee-node-bullet"></span
+                  >OpenAI API <span class="marquee-node-bullet"></span
                 ></span>
                 <span class="tech-marquee-node"
-                  >Codex <span class="marquee-node-bullet"></span
-                ></span>
-                <span class="tech-marquee-node"
-                  >Gemini <span class="marquee-node-bullet"></span
+                  >Anthropic API <span class="marquee-node-bullet"></span
                 ></span>
                 <span class="tech-marquee-node"
                   >SBERT <span class="marquee-node-bullet"></span
@@ -2222,6 +2497,10 @@
           <span class="dock-dot"></span>
           <span class="dock-text">Experience</span>
         </a>
+        <a href="#focus" class="dock-item" data-target="focus">
+          <span class="dock-dot"></span>
+          <span class="dock-text">Focus</span>
+        </a>
         <a href="#projects" class="dock-item" data-target="projects">
           <span class="dock-dot"></span>
           <span class="dock-text">Projects</span>
@@ -2229,6 +2508,10 @@
         <a href="#about" class="dock-item" data-target="about">
           <span class="dock-dot"></span>
           <span class="dock-text">About</span>
+        </a>
+        <a href="#journey" class="dock-item" data-target="journey">
+          <span class="dock-dot"></span>
+          <span class="dock-text">Journey</span>
         </a>
         <a href="#skills" class="dock-item" data-target="skills">
           <span class="dock-dot"></span>
@@ -2297,7 +2580,7 @@
             year: "2026",
             imageUrl: "assets/elegantvibes.png",
             description:
-              "A fashion storefront concept turned into a responsive web experience with clean layouts, smooth motion, and clear product sections.",
+              "A responsive fashion e-commerce storefront with men's and women's categories, smooth motion, and clear product sections.",
             techs: ["Next.js", "Tailwind CSS", "UI/UX Design"],
             tags: ["Web UI", "Visual Style", "Responsive"],
             liveUrl: "https://fashion-ecommerce-inky.vercel.app/",
@@ -2321,7 +2604,7 @@
             year: "2025",
             imageUrl: "assets/dinklab.png",
             description:
-              "A pickleball booking platform built for a Koronadal City client to handle court reservations, player coordination, and messages.",
+              "A booking platform for a two-court pickleball facility in Koronadal City with real-time availability, proof-of-payment review, and email confirmations. Handled nearly 700 bookings.",
             techs: [
               "Next.js",
               "Supabase",
@@ -2330,6 +2613,7 @@
               "Tailwind",
               "Zod",
               "Nodemailer",
+              "Cloudinary",
             ],
             tags: ["Web Design", "Visual Layout", "Prototype"],
             liveUrl: "https://dinklab.app/",
@@ -2366,7 +2650,8 @@
             year: "2025",
             imageUrl: "assets/mrdepot.png",
             description:
-              "Storefront layout organized for easy browsing of items, categories, and details.",
+              "A solo-built company site with a filterable materials catalog, project showcases, and a contact form that sends client inquiries to email.",
+            techs: ["Next.js", "Supabase", "TypeScript", "Tailwind CSS", "SWR"],
             tags: ["Catalog UI", "Web Layout", "Responsive"],
             liveUrl: "https://www.mrdepot.online/",
             githubUrl: "https://github.com/meraeugene/mrdepot",
@@ -2377,10 +2662,10 @@
             year: "2026",
             imageUrl: "assets/prodisenyo-builders.png",
             description:
-              "A website for Prodisenyo Builders Corporation in Cagayan de Oro City showing its services, completed projects, company vision, and inquiry options.",
+              "A solo-built company website presenting 35 projects across five categories, plus services and the company's mission and vision.",
             techs: ["Next.js", "@phosphor-icons/react", "SEO"],
             tags: ["Web UI", "Responsive Layout", "Live Site"],
-            liveUrl: "https://prodisenyo-builders.vercel.app/",
+            liveUrl: "https://prodisenyobuilders.online/",
             githubUrl: "https://github.com/meraeugene/prodisenyo-builders",
           },
           {
@@ -2389,7 +2674,7 @@
             year: "2026",
             imageUrl: "assets/probuild.png",
             description:
-              "A construction ERP system that connects attendance, payroll, project budgets, expenses, and financial reports in one place.",
+              "A construction ERP connecting attendance, payroll, budgets, expenses, and financial reports, with role-based access for six roles and a CEO dashboard.",
             techs: [
               "Next.js",
               "Supabase",
@@ -2408,13 +2693,14 @@
             year: "2026",
             imageUrl: "assets/archivia.png",
             description:
-              "A thesis archive and adviser matching system for USTP CDO that uses SBERT and FAISS search to connect students with research advisers.",
+              "Winner of the 2026 Best Capstone Award. A solo-built AI thesis archive for USTP CDO that uses SBERT and FAISS to match students with research advisers, supporting SDG 4: Quality Education.",
             techs: [
               "Next.js",
               "Supabase",
               "TypeScript",
               "Tailwind",
               "Zustand",
+              "FastAPI",
               "SWR",
             ],
             tags: ["Search UI", "Web Design", "Academic Tool"],
@@ -2445,7 +2731,7 @@
         }, 50);
 
         let loaderPercent = 0;
-        const targetDuration = 900;
+        const targetDuration = 600;
         const intervalTime = 10;
         const totalSteps = targetDuration / intervalTime;
         const increment = 100 / totalSteps;
@@ -2464,7 +2750,7 @@
               splashScreen.classList.add("loaded");
               document.body.style.overflow = "";
               initFramerObserver();
-            }, 600);
+            }, 450);
           } else {
             splashCounter.textContent = Math.floor(loaderPercent);
           }
@@ -2779,5 +3065,95 @@
         });
       });
     </script>
+  <div class="scroll-progress" id="scroll-progress"></div>
+<div class="cursor-spotlight" id="cursor-spotlight"></div>
+
+<script>
+(() => {
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  if (reduce) return;
+
+  /* Scroll progress */
+  const bar = document.getElementById("scroll-progress");
+  const updateBar = () => {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.transform = `scaleX(${max > 0 ? window.scrollY / max : 0})`;
+  };
+  window.addEventListener("scroll", updateBar, { passive: true });
+  updateBar();
+
+  if (!fine) return; // everything below is mouse-only
+
+  /* Cursor spotlight */
+  const spot = document.getElementById("cursor-spotlight");
+  window.addEventListener("mousemove", (e) => {
+    spot.style.setProperty("--mx", e.clientX + "px");
+    spot.style.setProperty("--my", e.clientY + "px");
+    spot.classList.add("on");
+  });
+  document.addEventListener("mouseleave", () => spot.classList.remove("on"));
+
+  /* Hero 3D depth */
+  const hero = document.getElementById("hero");
+  const h1 = document.querySelector(".hero-main-h1");
+  if (hero && h1) {
+    hero.addEventListener("mousemove", (e) => {
+      const r = hero.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      h1.style.setProperty("--hero-ry", (x * 10).toFixed(2) + "deg");
+      h1.style.setProperty("--hero-rx", (-y * 8).toFixed(2) + "deg");
+    });
+    hero.addEventListener("mouseleave", () => {
+      h1.style.setProperty("--hero-ry", "0deg");
+      h1.style.setProperty("--hero-rx", "0deg");
+    });
+  }
+
+  /* Project card 3D tilt + glare (event delegation, cards are built by JS) */
+  const gallery = document.getElementById("projects-gallery");
+  if (gallery) {
+    const MAX = 7;
+    gallery.addEventListener("mousemove", (e) => {
+      const win = e.target.closest(".project-canvas-window");
+      if (!win) return;
+      if (!win.querySelector(".glare")) {
+        const g = document.createElement("div");
+        g.className = "glare";
+        win.appendChild(g);
+      }
+      const r = win.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width;
+      const py = (e.clientY - r.top) / r.height;
+      win.classList.add("is-tilting");
+      win.style.setProperty("--tilt-y", ((px - 0.5) * 2 * MAX).toFixed(2) + "deg");
+      win.style.setProperty("--tilt-x", ((0.5 - py) * 2 * MAX).toFixed(2) + "deg");
+      win.style.setProperty("--gx", (px * 100).toFixed(1) + "%");
+      win.style.setProperty("--gy", (py * 100).toFixed(1) + "%");
+    });
+    gallery.addEventListener("mouseout", (e) => {
+      const win = e.target.closest(".project-canvas-window");
+      if (!win || win.contains(e.relatedTarget)) return;
+      win.classList.remove("is-tilting");
+      win.style.setProperty("--tilt-x", "0deg");
+      win.style.setProperty("--tilt-y", "0deg");
+    });
+  }
+
+  /* Magnetic hero buttons */
+  document.querySelectorAll(".btn-premium-line").forEach((btn) => {
+    btn.addEventListener("mousemove", (e) => {
+      const r = btn.getBoundingClientRect();
+      const dx = (e.clientX - (r.left + r.width / 2)) * 0.18;
+      const dy = (e.clientY - (r.top + r.height / 2)) * 0.28;
+      btn.style.transform = `translate(${dx}px, ${dy}px)`;
+    });
+    btn.addEventListener("mouseleave", () => {
+      btn.style.transform = "";
+    });
+  });
+})();
+</script>
   </body>
 </html>
