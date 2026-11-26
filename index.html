@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Andrew R. Villalon — Web and UI Designer</title>
+    <title>Andrew R. Villalon — Software Engineer</title>
     <meta
       name="description"
-      content="Portfolio of Andrew R. Villalon in Cagayan de Oro. Web design, user interfaces, prototypes, and live websites."
+      content="Portfolio of Andrew R. Villalon, a Software Engineer focused on digitalizing operations, automating workflows, and building reliable web systems."
     />
     <meta name="author" content="Andrew R. Villalon" />
     <meta name="robots" content="index, follow" />
@@ -85,16 +85,9 @@
 
       a,
       button,
-      input,
-      textarea,
       .project-canvas-window.clickable-window {
         position: relative;
         z-index: 9990;
-      }
-
-      a,
-      button,
-      .project-canvas-window.clickable-window {
         cursor: pointer;
       }
 
@@ -446,38 +439,6 @@
         color: var(--text-secondary);
       }
 
-      .status-dot {
-        width: 6px;
-        height: 6px;
-        background-color: #22c55e;
-        border-radius: 50%;
-        position: relative;
-      }
-
-      .status-dot::after {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 100%;
-        height: 100%;
-        background-color: #22c55e;
-        border-radius: 50%;
-        transform: translate(-50%, -50%) scale(1);
-        animation: statusPulse 2s infinite ease-out;
-      }
-
-      @keyframes statusPulse {
-        0% {
-          transform: translate(-50%, -50%) scale(1);
-          opacity: 0.8;
-        }
-        100% {
-          transform: translate(-50%, -50%) scale(3.5);
-          opacity: 0;
-        }
-      }
-
       .top-clock {
         font-family: "Space Grotesk", sans-serif;
         font-size: 0.75rem;
@@ -540,7 +501,7 @@
 
       .hero-synopsis {
         font-size: clamp(1rem, 1.35vw, 1.25rem);
-        line-height: 1.6;
+        line-height: 1.65;
         color: var(--text-secondary);
         font-weight: 300;
       }
@@ -673,74 +634,63 @@
         font-weight: 400;
       }
 
-      .workflow-section {
+      /* EXPERIENCE SECTION */
+      .experience-section {
         padding: 7rem 0;
         border-bottom: 1px solid var(--border-color);
         background: var(--bg-primary);
       }
 
-      .workflow-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 2rem;
-      }
-
-      @media (max-width: 1100px) {
-        .workflow-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-
-      @media (max-width: 600px) {
-        .workflow-grid {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      .workflow-step {
-        border-top: 1px solid var(--border-color);
-        padding-top: 1.75rem;
+      .experience-list {
         display: flex;
         flex-direction: column;
-        gap: 0.85rem;
-        transition: border-color 0.3s ease;
+        border-top: 1px solid var(--border-color);
       }
 
-      .workflow-step:hover {
-        border-color: var(--border-hover);
+      .experience-row {
+        display: grid;
+        grid-template-columns: 1.2fr 1.6fr 1fr;
+        gap: 2.5rem;
+        padding: 2.25rem 0;
+        border-bottom: 1px solid var(--border-color);
+        align-items: baseline;
       }
 
-      .step-index {
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 0.72rem;
-        font-weight: 700;
-        letter-spacing: 0.15em;
-        color: var(--text-tertiary);
+      @media (max-width: 991px) {
+        .experience-row {
+          grid-template-columns: 1fr;
+          gap: 0.65rem;
+        }
       }
 
-      .step-title {
+      .exp-role {
         font-family: "Instrument Serif", serif;
-        font-size: 1.85rem;
+        font-size: clamp(1.75rem, 2.5vw, 2.3rem);
         font-weight: 400;
         line-height: 1.1;
         color: var(--text-primary);
       }
 
-      .step-desc {
-        font-size: 0.92rem;
-        line-height: 1.6;
+      .exp-location {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 0.82rem;
         color: var(--text-secondary);
       }
 
-      .step-tools {
+      .exp-period {
         font-family: "Space Grotesk", sans-serif;
-        font-size: 0.68rem;
+        font-size: 0.75rem;
         font-weight: 600;
-        letter-spacing: 0.08em;
+        letter-spacing: 0.12em;
         text-transform: uppercase;
         color: var(--text-tertiary);
-        margin-top: auto;
-        padding-top: 0.5rem;
+        text-align: right;
+      }
+
+      @media (max-width: 991px) {
+        .exp-period {
+          text-align: left;
+        }
       }
 
       .projects-section {
@@ -1017,7 +967,7 @@
         gap: 2rem;
         white-space: nowrap;
         will-change: transform;
-        animation: marqueeLinearScroll 28s linear infinite;
+        animation: marqueeLinearScroll 34s linear infinite;
       }
 
       .marquee-row-channel.reverse-track .marquee-inner-track {
@@ -1181,14 +1131,14 @@
 
       .about-paragraph-large {
         font-size: clamp(1.15rem, 1.5vw, 1.32rem);
-        line-height: 1.55;
+        line-height: 1.65;
         color: var(--text-primary);
         font-weight: 300;
       }
 
       .about-paragraph-medium {
         font-size: 0.98rem;
-        line-height: 1.65;
+        line-height: 1.75;
         color: var(--text-secondary);
       }
 
@@ -1211,29 +1161,95 @@
       .certs-list {
         display: flex;
         flex-direction: column;
+        gap: 0.75rem;
       }
 
       .cert-item {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 1.1rem 0;
-        border-bottom: 1px solid var(--border-color);
+        padding: 1.15rem 1.25rem;
+        border: 1px solid var(--border-color);
+        border-radius: 10px;
+        background-color: var(--bg-secondary);
         font-size: 0.95rem;
-        transition: border-color 0.3s ease;
-      }
-
-      .cert-item:last-child {
-        border-bottom: none;
+        transition:
+          border-color 0.3s ease,
+          transform 0.3s ease;
       }
 
       .cert-item:hover {
         border-color: var(--border-hover);
+        transform: translateY(-2px);
+      }
+
+      .cert-item.capstone-spotlight {
+        border: 1.5px solid var(--text-primary);
+        background: linear-gradient(
+          135deg,
+          var(--bg-secondary) 0%,
+          var(--bg-tertiary) 100%
+        );
+        box-shadow: 0 12px 32px -12px rgba(0, 0, 0, 0.25);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cert-item.capstone-spotlight::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -120%;
+        width: 60%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.14),
+          transparent
+        );
+        transform: skewX(-20deg);
+        animation: capstoneShine 4.5s infinite ease-in-out;
+        pointer-events: none;
+      }
+
+      :root[data-theme="light"] .cert-item.capstone-spotlight::after {
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(0, 0, 0, 0.06),
+          transparent
+        );
+      }
+
+      @keyframes capstoneShine {
+        0% {
+          left: -120%;
+        }
+        45%,
+        100% {
+          left: 150%;
+        }
+      }
+
+      .cert-left {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+
+      .capstone-tag {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 0.62rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--text-primary);
       }
 
       .cert-name {
         color: var(--text-primary);
-        font-weight: 500;
+        font-weight: 600;
       }
 
       .cert-issuer {
@@ -1246,10 +1262,11 @@
         .cert-item {
           flex-direction: column;
           align-items: flex-start;
-          gap: 0.25rem;
+          gap: 0.35rem;
         }
       }
 
+      /* CONTACT SECTION - DIRECT CHANNELS */
       .contact-section {
         padding: 8rem 0 4rem 0;
         z-index: 50;
@@ -1258,7 +1275,7 @@
 
       .contact-container {
         display: grid;
-        grid-template-columns: 1.1fr 0.9fr;
+        grid-template-columns: 1.05fr 0.95fr;
         gap: 6rem;
         align-items: start;
         margin-bottom: 8rem;
@@ -1267,7 +1284,7 @@
       @media (max-width: 991px) {
         .contact-container {
           grid-template-columns: 1fr;
-          gap: 4rem;
+          gap: 3.5rem;
           margin-bottom: 6rem;
         }
       }
@@ -1294,154 +1311,94 @@
         text-transform: uppercase;
       }
 
-      .contact-info-list {
-        display: flex;
-        flex-direction: column;
-        gap: 1.75rem;
-        margin-top: 1.5rem;
+      .contact-subtext {
+        font-size: 1rem;
+        line-height: 1.65;
+        color: var(--text-secondary);
+        max-width: 440px;
       }
 
-      .contact-info-item {
+      .contact-direct-list {
         display: flex;
         flex-direction: column;
-        gap: 0.4rem;
+        border-top: 1px solid var(--border-color);
+      }
+
+      .direct-channel-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 1.75rem 0;
+        border-bottom: 1px solid var(--border-color);
+        text-decoration: none;
+        color: var(--text-primary);
+        transition:
+          border-color 0.3s ease,
+          padding-left 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .direct-channel-row:hover {
+        border-color: var(--border-hover);
+        padding-left: 0.75rem;
+      }
+
+      .channel-details {
+        display: flex;
+        flex-direction: column;
+        gap: 0.45rem;
       }
 
       .info-label {
         font-family: "Space Grotesk", sans-serif;
         font-size: 0.7rem;
         font-weight: 600;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
         color: var(--text-tertiary);
       }
 
-      .info-val {
-        font-size: 1.05rem;
+      .channel-value {
+        font-family: "Instrument Serif", serif;
+        font-size: clamp(1.45rem, 2.3vw, 2rem);
+        font-weight: 400;
+        line-height: 1.15;
         color: var(--text-primary);
-        border-bottom: 1px solid transparent;
-        align-self: flex-start;
-        text-decoration: none;
+        word-break: break-word;
       }
 
-      a.info-val:hover {
-        border-color: var(--text-primary);
-      }
-
-      .contact-form {
-        display: flex;
-        flex-direction: column;
-        gap: 2.5rem;
-        position: relative;
-      }
-
-      .form-group {
-        position: relative;
-        display: flex;
-        flex-direction: column-reverse;
-      }
-
-      .form-group input,
-      .form-group textarea {
-        background: transparent;
-        border: none;
-        border-bottom: 1px solid var(--border-color);
-        padding: 0.75rem 0;
-        font-family: "Plus Jakarta Sans", sans-serif;
-        font-size: 1rem;
-        color: var(--text-primary);
-        outline: none;
-        border-radius: 0;
-      }
-
-      .form-group textarea {
-        resize: none;
-      }
-
-      .form-group label {
+      .channel-sub {
         font-family: "Space Grotesk", sans-serif;
         font-size: 0.75rem;
-        font-weight: 600;
-        letter-spacing: 0.1em;
-        color: var(--text-tertiary);
+        color: var(--text-secondary);
       }
 
-      .form-bar {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0%;
-        height: 1.5px;
-        background-color: var(--text-primary);
-        transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      }
-
-      .form-group input:focus ~ .form-bar,
-      .form-group textarea:focus ~ .form-bar {
-        width: 100%;
-      }
-
-      .form-group input:focus ~ label,
-      .form-group textarea:focus ~ label {
-        color: var(--text-primary);
-      }
-
-      .submit-btn {
-        align-self: flex-start;
-        background-color: var(--text-primary);
-        color: var(--bg-primary);
-        border: 1px solid var(--text-primary);
-        padding: 1.25rem 2.5rem;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 0.85rem;
-        font-weight: 600;
-        letter-spacing: 0.1em;
-        border-radius: 40px;
+      .channel-arrow {
+        width: 42px;
+        height: 42px;
+        border: 1px solid var(--border-color);
+        border-radius: 50%;
         display: flex;
         align-items: center;
-        gap: 1rem;
+        justify-content: center;
+        flex-shrink: 0;
         transition:
-          background-color 0.4s ease,
-          color 0.4s ease;
+          background-color 0.3s ease,
+          color 0.3s ease,
+          border-color 0.3s ease,
+          transform 0.3s ease;
       }
 
-      .submit-btn:hover {
-        background-color: transparent;
-        color: var(--text-primary);
-      }
-
-      .btn-icon {
+      .channel-arrow svg {
         width: 18px;
         height: 18px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
-      .submit-btn:hover .btn-icon {
-        transform: translateX(4px);
-      }
-
-      .success-message {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: var(--bg-primary);
-        display: none;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 1.5rem;
-        text-align: center;
-        z-index: 5;
-      }
-
-      .success-message svg {
-        width: 48px;
-        height: 48px;
-        color: var(--text-primary);
+      .direct-channel-row:hover .channel-arrow {
+        background-color: var(--text-primary);
+        border-color: var(--text-primary);
+        color: var(--bg-primary);
+        transform: rotate(45deg);
       }
 
       .portfolio-footer {
@@ -1467,6 +1424,7 @@
       .footer-right {
         display: flex;
         gap: 2rem;
+        flex-wrap: wrap;
       }
 
       .footer-right a {
@@ -1668,7 +1626,7 @@
           <div class="splash-header-title">Andrew R. Villalon</div>
         </span>
         <span class="splash-animate-line">
-          <div class="splash-sub-portfolio">web and ui design</div>
+          <div class="splash-sub-portfolio">software engineer</div>
         </span>
       </div>
       <div class="splash-right-counter">
@@ -1688,7 +1646,6 @@
           class="header-logo theme-aware-logo"
         />
         <div class="top-status">
-          <span class="status-dot"></span>
           <span id="hud-changing-label">CAGAYAN DE ORO, PH</span>
         </div>
       </div>
@@ -1701,16 +1658,14 @@
 
         <div class="hero-center-display" id="hero-parallax-target">
           <span class="hero-eyebrow framer-reveal"
-            >Web Design • User Interfaces • Working Prototypes</span
+            >Operational Digitalization • Workflow Automation • Scalable Systems</span
           >
           <h1 class="hero-main-h1 framer-reveal delay-1">
-            Andrew R. Villalon<br /><em>web and ui designer</em>
+            Andrew R. Villalon<br /><em>software engineer</em>
           </h1>
           <div class="hero-lower-row-grid framer-reveal delay-2">
             <p class="hero-synopsis">
-              I design clear web pages and user interfaces from brand books,
-              build working prototypes in the browser, hand off clean files to
-              developers, and check every live page after launch.
+             I turn business challenges into reliable software that simplifies workflows, improves efficiency, and supports long-term business growth.
             </p>
             <div class="hero-centered-ctas">
               <a href="#contact" class="btn-premium-line solid">Contact Me</a>
@@ -1725,69 +1680,51 @@
           <div class="matrix-item">
             <span class="matrix-label">Location</span>
             <span class="matrix-value"
-              ><strong>Cagayan de Oro, Onsite</strong></span
+              ><strong>Cagayan de Oro, PH</strong></span
             >
           </div>
           <div class="matrix-item">
-            <span class="matrix-label">Work Done</span>
+            <span class="matrix-label">Delivered Solutions</span>
             <span class="matrix-value"
-              ><strong>30+ Sites and Web Apps</strong></span
+              ><strong>30+ Web Platforms and Systems</strong></span
             >
           </div>
           <div class="matrix-item">
-            <span class="matrix-label">Focus</span>
+            <span class="matrix-label">Value Delivered</span>
             <span class="matrix-value"
-              ><strong>Clean UI, Prototypes, Live Check</strong></span
+              ><strong>Process Automation and Digital Transformation</strong></span
             >
           </div>
         </div>
       </section>
 
-      <section id="workflow" class="workflow-section">
+      <section id="experience" class="experience-section">
         <div class="editorial-header framer-reveal">
-          <h2 class="editorial-title">How I Work</h2>
-          <span class="editorial-label">From Brand Book to Live Page</span>
+          <h2 class="editorial-title">Experience</h2>
+          <span class="editorial-label">Career Timeline</span>
         </div>
 
-        <div class="workflow-grid">
-          <div class="workflow-step framer-reveal">
-            <span class="step-index">01 / DESIGN</span>
-            <h3 class="step-title">Follow the Brand Book</h3>
-            <p class="step-desc">
-              I turn existing brand colors, fonts, and rules into clean web
-              pages and user interfaces that fit the company and audience.
-            </p>
-            <span class="step-tools">Figma • Adobe • Layout Grids</span>
+        <div class="experience-list">
+          <div class="experience-row framer-reveal">
+            <h3 class="exp-role">Software Engineer</h3>
+            <span class="exp-location"
+              >Prodisenyo Builders Corp., Cagayan de Oro</span
+            >
+            <span class="exp-period">July 2026 – Present</span>
           </div>
 
-          <div class="workflow-step framer-reveal delay-1">
-            <span class="step-index">02 / PROTOTYPE</span>
-            <h3 class="step-title">Build Working Prototypes</h3>
-            <p class="step-desc">
-              I build real, clickable prototypes fast so everyone can test
-              layout flow, spacing, and mobile views before final build.
-            </p>
-            <span class="step-tools">HTML • CSS • JavaScript • Code</span>
+          <div class="experience-row framer-reveal delay-1">
+            <h3 class="exp-role">Frontend Developer Intern</h3>
+            <span class="exp-location">Open Sesame PH, Makati City (Remote)</span>
+            <span class="exp-period">May 2026 – June 2026</span>
           </div>
 
-          <div class="workflow-step framer-reveal delay-2">
-            <span class="step-index">03 / HANDOVER</span>
-            <h3 class="step-title">Hand Over Cleanly</h3>
-            <p class="step-desc">
-              I organize layers, states, spacing, and assets so developers can
-              build the page without guessing what goes where.
-            </p>
-            <span class="step-tools">Clear Specs • States • Git</span>
-          </div>
-
-          <div class="workflow-step framer-reveal delay-3">
-            <span class="step-index">04 / LIVE CHECK</span>
-            <h3 class="step-title">Check When Live</h3>
-            <p class="step-desc">
-              I check my own work before launch and visit the live website again
-              after launch to fix layout, link, or screen issues.
-            </p>
-            <span class="step-tools">WordPress • Browser Check • Polish</span>
+          <div class="experience-row framer-reveal delay-2">
+            <h3 class="exp-role">Software Engineer Intern</h3>
+            <span class="exp-location"
+              >Prodisenyo Builders Corp., Cagayan de Oro</span
+            >
+            <span class="exp-period">Feb 2026 – May 2026</span>
           </div>
         </div>
       </section>
@@ -1795,7 +1732,7 @@
       <section id="projects" class="projects-section">
         <div class="editorial-header framer-reveal">
           <h2 class="editorial-title">Projects</h2>
-          <span class="editorial-label">Websites and Interfaces</span>
+          <span class="editorial-label">Websites and Applications</span>
         </div>
 
         <div class="landscape-gallery-grid" id="projects-gallery"></div>
@@ -1821,16 +1758,12 @@
             <h2 class="about-title">Andrew R. Villalon</h2>
             <div class="about-quick-specs">
               <div class="spec-row">
-                <span class="spec-label">CITY</span>
-                <span class="spec-val"
-                  >Cagayan de Oro City (Day Shift Onsite)</span
-                >
+                <span class="spec-label">ROLE</span>
+                <span class="spec-val">Software Engineer</span>
               </div>
               <div class="spec-row">
-                <span class="spec-label">WHAT I DO</span>
-                <span class="spec-val"
-                  >Web Design, UI, Working Prototypes, Live Sites</span
-                >
+                <span class="spec-label">CITY</span>
+                <span class="spec-val">Cagayan de Oro City</span>
               </div>
               <div class="spec-row">
                 <span class="spec-label">EXPERIENCE</span>
@@ -1852,23 +1785,20 @@
 
           <div class="about-right-narrative framer-reveal delay-2">
             <p class="about-paragraph-large">
-              I am Andrew R. Villalon from Cagayan de Oro. Since 2022, I have
-              designed and built websites and web apps with a strong focus on
-              clean user interfaces and working code.
+          I help businesses replace manual processes, scattered spreadsheets, and inefficient workflows with organized digital systems built around their operations.
             </p>
             <p class="about-paragraph-medium">
-              I like a clear order of work and finishing what I start. I can
-              take a brand book, design pages in Figma or Adobe, turn them into
-              working prototypes, hand them over cleanly to developers, and
-              check the live site once published. I also have experience with
-              WordPress and simple video editing.
+              My focus is to improve business operations by reducing manual work and errors, providing clear approval and reporting processes, and building reliable software that supports long-term growth.
             </p>
 
             <div class="certifications-wrapper">
               <span class="cert-section-label">AWARDS AND CERTIFICATES</span>
               <div class="certs-list">
-                <div class="cert-item">
-                  <span class="cert-name">Best Capstone Award</span>
+                <div class="cert-item capstone-spotlight">
+                  <div class="cert-left">
+                    <span class="capstone-tag">Featured Recognition</span>
+                    <span class="cert-name">Best Capstone Award</span>
+                  </div>
                   <span class="cert-issuer">USTP CDO • June 2026</span>
                 </div>
                 <div class="cert-item">
@@ -1893,54 +1823,142 @@
 
       <section id="skills" class="skills-section">
         <div class="editorial-header framer-reveal">
-          <h2 class="editorial-title">Tools and Skills</h2>
-          <span class="editorial-label">Result Comes First</span>
+          <h2 class="editorial-title">Tech Stack</h2>
+          <span class="editorial-label">Tools and Technologies</span>
         </div>
 
         <div class="marquee-stack-wrapper">
           <div class="framer-reveal">
-            <span class="marquee-row-header-label"
-              >Design, Brand and Media</span
-            >
+            <span class="marquee-row-header-label">Frontend</span>
             <div class="marquee-row-channel">
               <div class="marquee-inner-track">
                 <span class="tech-marquee-node"
-                  >Figma <span class="marquee-node-bullet"></span
+                  >React <span class="marquee-node-bullet"></span
                 ></span>
                 <span class="tech-marquee-node"
-                  >Adobe Tools <span class="marquee-node-bullet"></span
+                  >Next.js <span class="marquee-node-bullet"></span
                 ></span>
                 <span class="tech-marquee-node"
-                  >Web and UI Design <span class="marquee-node-bullet"></span
+                  >TypeScript <span class="marquee-node-bullet"></span
                 ></span>
                 <span class="tech-marquee-node"
-                  >Brand Book Rules <span class="marquee-node-bullet"></span
+                  >JavaScript (ES6+) <span class="marquee-node-bullet"></span
                 ></span>
                 <span class="tech-marquee-node"
-                  >Clean Developer Handover
-                  <span class="marquee-node-bullet"></span
+                  >HTML5 <span class="marquee-node-bullet"></span
                 ></span>
                 <span class="tech-marquee-node"
-                  >Simple Video Editing <span class="marquee-node-bullet"></span
+                  >CSS3 <span class="marquee-node-bullet"></span
                 ></span>
                 <span class="tech-marquee-node"
-                  >Figma <span class="marquee-node-bullet"></span
+                  >Tailwind CSS <span class="marquee-node-bullet"></span
                 ></span>
                 <span class="tech-marquee-node"
-                  >Adobe Tools <span class="marquee-node-bullet"></span
+                  >Zustand <span class="marquee-node-bullet"></span
                 ></span>
                 <span class="tech-marquee-node"
-                  >Web and UI Design <span class="marquee-node-bullet"></span
+                  >Redux Toolkit <span class="marquee-node-bullet"></span
                 ></span>
                 <span class="tech-marquee-node"
-                  >Brand Book Rules <span class="marquee-node-bullet"></span
+                  >SWR <span class="marquee-node-bullet"></span
                 ></span>
                 <span class="tech-marquee-node"
-                  >Clean Developer Handover
-                  <span class="marquee-node-bullet"></span
+                  >React <span class="marquee-node-bullet"></span
                 ></span>
                 <span class="tech-marquee-node"
-                  >Simple Video Editing <span class="marquee-node-bullet"></span
+                  >Next.js <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >TypeScript <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >JavaScript (ES6+) <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >HTML5 <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >CSS3 <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Tailwind CSS <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Zustand <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Redux Toolkit <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >SWR <span class="marquee-node-bullet"></span
+                ></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="framer-reveal">
+            <span class="marquee-row-header-label">Backend and Databases</span>
+            <div class="marquee-row-channel reverse-track">
+              <div class="marquee-inner-track">
+                <span class="tech-marquee-node"
+                  >Node.js <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Express.js <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Python <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >PHP <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >RESTful APIs <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >JWT <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >MySQL <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >MongoDB <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Supabase <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Firebase <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Node.js <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Express.js <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Python <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >PHP <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >RESTful APIs <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >JWT <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >MySQL <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >MongoDB <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Supabase <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Firebase <span class="marquee-node-bullet"></span
                 ></span>
               </div>
             </div>
@@ -1948,47 +1966,125 @@
 
           <div class="framer-reveal">
             <span class="marquee-row-header-label"
-              >Prototypes, Web and CMS</span
+              >Tools, DevOps and Cloud</span
             >
+            <div class="marquee-row-channel">
+              <div class="marquee-inner-track">
+                <span class="tech-marquee-node"
+                  >Git <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >GitHub <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Bitbucket <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Docker <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >AWS (EC2/S3) <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Vercel <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Postman <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Figma <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >CI/CD <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Git <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >GitHub <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Bitbucket <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Docker <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >AWS (EC2/S3) <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Vercel <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Postman <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Figma <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >CI/CD <span class="marquee-node-bullet"></span
+                ></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="framer-reveal">
+            <span class="marquee-row-header-label">AI and Integrations</span>
             <div class="marquee-row-channel reverse-track">
               <div class="marquee-inner-track">
                 <span class="tech-marquee-node"
-                  >Working Prototypes <span class="marquee-node-bullet"></span
+                  >Claude <span class="marquee-node-bullet"></span
                 ></span>
                 <span class="tech-marquee-node"
-                  >WordPress <span class="marquee-node-bullet"></span
+                  >Codex <span class="marquee-node-bullet"></span
                 ></span>
                 <span class="tech-marquee-node"
-                  >HTML and CSS <span class="marquee-node-bullet"></span
+                  >Gemini <span class="marquee-node-bullet"></span
                 ></span>
                 <span class="tech-marquee-node"
-                  >JavaScript and TypeScript
-                  <span class="marquee-node-bullet"></span
+                  >SBERT <span class="marquee-node-bullet"></span
                 ></span>
                 <span class="tech-marquee-node"
-                  >React and Next.js <span class="marquee-node-bullet"></span
+                  >FAISS <span class="marquee-node-bullet"></span
                 ></span>
                 <span class="tech-marquee-node"
-                  >Live Page QA <span class="marquee-node-bullet"></span
+                  >Stripe <span class="marquee-node-bullet"></span
                 ></span>
                 <span class="tech-marquee-node"
-                  >Working Prototypes <span class="marquee-node-bullet"></span
+                  >PayMongo <span class="marquee-node-bullet"></span
                 ></span>
                 <span class="tech-marquee-node"
-                  >WordPress <span class="marquee-node-bullet"></span
+                  >PayPal <span class="marquee-node-bullet"></span
                 ></span>
                 <span class="tech-marquee-node"
-                  >HTML and CSS <span class="marquee-node-bullet"></span
+                  >Webhooks <span class="marquee-node-bullet"></span
                 ></span>
                 <span class="tech-marquee-node"
-                  >JavaScript and TypeScript
-                  <span class="marquee-node-bullet"></span
+                  >Claude <span class="marquee-node-bullet"></span
                 ></span>
                 <span class="tech-marquee-node"
-                  >React and Next.js <span class="marquee-node-bullet"></span
+                  >Codex <span class="marquee-node-bullet"></span
                 ></span>
                 <span class="tech-marquee-node"
-                  >Live Page QA <span class="marquee-node-bullet"></span
+                  >Gemini <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >SBERT <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >FAISS <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Stripe <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >PayMongo <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >PayPal <span class="marquee-node-bullet"></span
+                ></span>
+                <span class="tech-marquee-node"
+                  >Webhooks <span class="marquee-node-bullet"></span
                 ></span>
               </div>
             </div>
@@ -2001,102 +2097,89 @@
           <div class="contact-left framer-reveal">
             <span class="contact-badge">CONTACT</span>
             <h2 class="contact-headline">
-              Let's build<br />clean web<br />pages.
+              Let's build<br />clean web<br />apps.
             </h2>
-            <div class="contact-info-list">
-              <div class="contact-info-item">
-                <span class="info-label">Email</span>
-                <a href="mailto:andrewvillalon.dev@gmail.com" class="info-val"
-                  >andrewvillalon.dev@gmail.com</a
-                >
-              </div>
-              <div class="contact-info-item">
-                <span class="info-label">Website</span>
-                <a
-                  href="https://www.andrewvillalon.online"
-                  class="info-val"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >www.andrewvillalon.online</a
-                >
-              </div>
-              <div class="contact-info-item">
-                <span class="info-label">City</span>
-                <span class="info-val">Cagayan de Oro City, Philippines</span>
-              </div>
-            </div>
+            <p class="contact-subtext">
+              Call me, send an email, or check my GitHub for software engineering
+              roles, web apps, APIs, and cloud builds.
+            </p>
           </div>
 
           <div class="contact-right framer-reveal delay-1">
-            <form
-              class="contact-form"
-              id="contact-form"
-              action="#"
-              method="POST"
-            >
-              <div class="form-group">
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  placeholder=" "
-                />
-                <label for="name">Your Name</label>
-                <span class="form-bar"></span>
-              </div>
-
-              <div class="form-group">
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  placeholder=" "
-                />
-                <label for="email">Your Email</label>
-                <span class="form-bar"></span>
-              </div>
-
-              <div class="form-group">
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  placeholder=" "
-                  rows="4"
-                ></textarea>
-                <label for="message">Message</label>
-                <span class="form-bar"></span>
-              </div>
-
-              <button type="submit" class="submit-btn">
-                <span class="btn-text">Send Message</span>
-                <span class="btn-icon">
+            <div class="contact-direct-list">
+              <a href="tel:+639464143722" class="direct-channel-row">
+                <div class="channel-details">
+                  <span class="info-label">Phone / Call</span>
+                  <span class="channel-value">+63 946 414 3722</span>
+                  <span class="channel-sub">09464143722 • Tap to call</span>
+                </div>
+                <span class="channel-arrow" aria-hidden="true">
                   <svg
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
                     stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
                   >
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
                   </svg>
                 </span>
-              </button>
+              </a>
 
-              <div class="success-message" id="form-success">
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                <span>Message sent. Thank you for reaching out.</span>
-              </div>
-            </form>
+              <a
+                href="mailto:andrewvillalon.dev@gmail.com"
+                class="direct-channel-row"
+              >
+                <div class="channel-details">
+                  <span class="info-label">Email</span>
+                  <span class="channel-value"
+                    >andrewvillalon.dev@gmail.com</span
+                  >
+                  <span class="channel-sub">Direct email</span>
+                </div>
+                <span class="channel-arrow" aria-hidden="true">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </span>
+              </a>
+
+              <a
+                href="https://github.com/meraeugene/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="direct-channel-row"
+              >
+                <div class="channel-details">
+                  <span class="info-label">GitHub</span>
+                  <span class="channel-value">github.com/meraeugene</span>
+                  <span class="channel-sub">Code repositories and projects</span>
+                </div>
+                <span class="channel-arrow" aria-hidden="true">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </span>
+              </a>
+            </div>
           </div>
         </div>
 
@@ -2110,8 +2193,10 @@
             <span>&copy; 2026 Andrew R. Villalon. Cagayan de Oro City.</span>
           </div>
           <div class="footer-right">
+            <a href="tel:+639464143722">+63 946 414 3722</a>
+            <a href="mailto:andrewvillalon.dev@gmail.com">Email</a>
             <a
-              href="https://github.com/meraeugene"
+              href="https://github.com/meraeugene/"
               target="_blank"
               rel="noopener noreferrer"
               >GitHub</a
@@ -2133,9 +2218,9 @@
           <span class="dock-dot"></span>
           <span class="dock-text">Home</span>
         </a>
-        <a href="#workflow" class="dock-item" data-target="workflow">
+        <a href="#experience" class="dock-item" data-target="experience">
           <span class="dock-dot"></span>
-          <span class="dock-text">Process</span>
+          <span class="dock-text">Experience</span>
         </a>
         <a href="#projects" class="dock-item" data-target="projects">
           <span class="dock-dot"></span>
@@ -2147,7 +2232,7 @@
         </a>
         <a href="#skills" class="dock-item" data-target="skills">
           <span class="dock-dot"></span>
-          <span class="dock-text">Tools</span>
+          <span class="dock-text">Stack</span>
         </a>
         <a href="#contact" class="dock-item" data-target="contact">
           <span class="dock-dot"></span>
@@ -2206,38 +2291,37 @@
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const projects = [
-         
           {
             name: "Elegant Vibes",
             role: "Web and UI Design",
             year: "2026",
             imageUrl: "assets/elegantvibes.png",
             description:
-              "A fashion-forward storefront concept translated from custom design into a responsive web experience, featuring high-fidelity layouts, tasteful motion, and polished product storytelling.",
+              "A fashion storefront concept turned into a responsive web experience with clean layouts, smooth motion, and clear product sections.",
             techs: ["Next.js", "Tailwind CSS", "UI/UX Design"],
             tags: ["Web UI", "Visual Style", "Responsive"],
             liveUrl: "",
             githubUrl: "",
           },
-           {
+          {
             name: "Eli Studio",
             role: "Portfolio and Landing UI",
             year: "2025",
             imageUrl: "assets/elistudio.png",
             description:
-              "A refined portfolio website for an interior architecture studio, pairing minimalist editorial layouts with smooth transitions and premium project presentation built for visual impact.",
+              "A portfolio website for an interior architecture studio with simple layouts, smooth transitions, and clear project showcases.",
             techs: ["Next.js", "TypeScript", "Tailwind", "Framer Motion"],
             tags: ["Landing Page", "UI Layout", "Web Design"],
             liveUrl: "https://eli-studio-phi.vercel.app/",
             githubUrl: "https://github.com/meraeugene/eli-studio",
           },
-            {
+          {
             name: "DinkLab",
             role: "Brand and Web Layout",
             year: "2025",
             imageUrl: "assets/dinklab.png",
             description:
-              "A production-ready pickleball booking platform built for a Koronadal City client, streamlining court reservations, player coordination, and operational messaging through a polished Next.js experience.",
+              "A pickleball booking platform built for a Koronadal City client to handle court reservations, player coordination, and messages.",
             techs: [
               "Next.js",
               "Supabase",
@@ -2251,7 +2335,7 @@
             liveUrl: "https://dinklab.app/",
             githubUrl: "https://github.com/meraeugene/DinkLab",
           },
-           {
+          {
             name: "Mr Depot",
             role: "Catalog and Web Layout",
             year: "2025",
@@ -2262,50 +2346,25 @@
             liveUrl: "https://www.mrdepot.online/",
             githubUrl: "https://github.com/meraeugene/mrdepot",
           },
-          
-          // {
-          //   name: "SalesPro CRM",
-          //   role: "Analytics Cards and UI",
-          //   year: "2026",
-          //   imageUrl: "assets/salesprocrm.png",
-          //   description:
-          //     "Sales tracking cards and clean data views built to make numbers easy to read at a glance.",
-          //   tags: ["Data UI", "Cards", "Web Interface"],
-          //   liveUrl: "",
-          //   githubUrl: "",
-          // },
-           {
+          {
             name: "Prodisenyo Builders",
             role: "Web Design and Live Site",
             year: "2026",
             imageUrl: "assets/prodisenyo-builders.png",
             description:
-              "A polished corporate website for Prodisenyo Builders Corporation in Cagayan de Oro City, presenting its architectural, engineering, construction management, and total fit-out services, completed projects, company vision, and consultation pathways.",
+              "A website for Prodisenyo Builders Corporation in Cagayan de Oro City showing its services, completed projects, company vision, and inquiry options.",
             techs: ["Next.js", "@phosphor-icons/react", "SEO"],
             tags: ["Web UI", "Responsive Layout", "Live Site"],
             liveUrl: "https://prodisenyo-builders.vercel.app/",
             githubUrl: "https://github.com/meraeugene/prodisenyo-builders",
           },
-           
-          // {
-          //   name: "Mira",
-          //   role: "Web Page Design",
-          //   year: "2025",
-          //   imageUrl: "assets/mira.png",
-          //   description:
-          //     "Clean page design focusing on readable text, image balance, and smooth scrolling.",
-          //   tags: ["Page Design", "UI", "Web"],
-          //   liveUrl: "",
-          //   githubUrl: "",
-          // },
-          
           {
             name: "Probuild Platform",
             role: "UI Design and Working Prototype",
             year: "2026",
             imageUrl: "assets/probuild.png",
             description:
-              "An enterprise-grade construction ERP that connects biometric attendance, payroll automation, budgeting, expenses, and financial analytics into one decision-ready operations system.",
+              "A construction ERP system that connects attendance, payroll, project budgets, expenses, and financial reports in one place.",
             techs: [
               "Next.js",
               "Supabase",
@@ -2318,14 +2377,13 @@
             liveUrl: "https://prodisenyo-probuild.vercel.app/",
             githubUrl: "",
           },
-         
           {
             name: "Archivia",
             role: "Web Design and Build",
             year: "2026",
             imageUrl: "assets/archivia.png",
             description:
-              "A thesis management and adviser recommendation system for USTP CDO, using SBERT embeddings and FAISS semantic search to match students with suitable research mentors intelligently.",
+              "A thesis archive and adviser matching system for USTP CDO that uses SBERT and FAISS search to connect students with research advisers.",
             techs: [
               "Next.js",
               "Supabase",
@@ -2338,20 +2396,18 @@
             liveUrl: "",
             githubUrl: "",
           },
-        
           {
             name: "Fortify",
             role: "Security Check UI",
             year: "2025",
             imageUrl: "assets/fortify.png",
             description:
-              "A cybersecurity analysis tool that scans URLs and text extracted from images, helping users surface phishing signals and suspicious threats through a clear, security-focused workflow.",
+              "A security check tool that scans links and text from images to spot phishing signs and suspicious threats clearly.",
             techs: ["Next.js", "Supabase", "TypeScript", "Tailwind CSS"],
             tags: ["Tool UI", "Web App", "Clean States"],
             liveUrl: "https://url-fortify-topaz.vercel.app/",
             githubUrl: "https://github.com/meraeugene/url-fortify",
           },
-        
         ];
 
         const splashScreen = document.getElementById("splash-screen");
@@ -2468,7 +2524,7 @@
 
           const rolePill = document.createElement("span");
           rolePill.className = "proj-role-pill";
-          rolePill.textContent = project.role || "Web and UI Design";
+          rolePill.textContent = project.role || "Software Engineering";
 
           const header = document.createElement("div");
           header.className = "proj-meta-header";
@@ -2695,23 +2751,6 @@
               .getElementById(item.getAttribute("data-target"))
               ?.scrollIntoView({ behavior: "smooth" });
           });
-        });
-
-        const contactForm = document.getElementById("contact-form");
-        const submitBtn = contactForm.querySelector(".submit-btn");
-        const successMsg = document.getElementById("form-success");
-
-        contactForm.addEventListener("submit", (e) => {
-          e.preventDefault();
-          submitBtn.disabled = true;
-          submitBtn.querySelector(".btn-text").textContent = "SENDING...";
-          setTimeout(() => {
-            contactForm
-              .querySelectorAll(".form-group, .submit-btn")
-              .forEach((el) => (el.style.opacity = "0"));
-            successMsg.style.display = "flex";
-            setTimeout(() => contactForm.reset(), 500);
-          }, 1200);
         });
       });
     </script>
